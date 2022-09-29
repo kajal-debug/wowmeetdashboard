@@ -9,6 +9,7 @@ const agoratoken = require("./router/chat");
 const {RtcTokenuilder,RtcRole}= require('agora-access-token');
 const APP_ID = process.env.APP_ID;
 const APP_CERTIFICATE = process.env.APP_CERTIFICATE;
+const fs = require("fs");
 // const io = require('socket.io').listen(http
 //   //  {
 //   // cors: {
@@ -55,6 +56,16 @@ mongoose.connect( db||process.env.MONGO_DB_LOCAL_URL,
     console.error(error);
     process.exit(1);
   });
+//   fs.readFile('./index.html', function (err, html) {
+
+//     if (err) throw err;    
+
+//     http.createServer(function(request, response) {  
+//         response.writeHeader(200, {"Content-Type": "text/html"});  
+//         response.write(html);  
+//         response.end();  
+//     }).listen(port);
+// });
 //  async()=>{
 //   mongoose.connect(process.env.MONGO_DB_LOCAL_URL,{
 //   //connectTimeoutMS: 5000,
@@ -160,6 +171,31 @@ const generateAccessToken=(req,res)=>{
   const token = (APP_ID,APP_CERTIFICATE,channelName,uid,role,privilegeExpireTime);
   return res.json({'token':token});
 }
-http.listen(port,generateAccessToken, nocache, () => {
-  console.log(`Express Server is started at PORT : ${port}`);
-});
+// fs.readFile('./index.html', function (err, html) {
+
+//   if (err) throw err;    
+
+// (request, response) =>{  
+//       response.writeHeader(200, {"Content-Type": "text/html"});  
+//       response.write(html);  
+//       response.end();  
+// }
+// });
+fs.readFile('./index.html', function (err, html) {
+
+      if (err) throw err;    
+  
+     var servers = server.createServer(function(request, response) {  
+          response.writeHeader(200, {"Content-Type": "text/html"});  
+          response.write(html);  
+          response.end();  
+      }).listen(port);
+      servers.on('error', function (e) {
+        // Handle your error here
+        console.log(e);
+      })
+  });
+ 
+// http.listen(port,generateAccessToken, nocache, () => {
+//   console.log(`Express Server is started at PORT : ${port}`);
+// });
