@@ -1,12 +1,12 @@
 {
-  "name": "online-shopping",
+  "name": "wowexp",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "./indexhtml --prefix client",
+    "client": "./index.html --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
