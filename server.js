@@ -75,9 +75,9 @@ mongoose.connect( process.env.MONGO_DB_LOCAL_URL,
 
 
 // simple request
-app.get("/", (request, response) => {
-  response.render('./index');
-});
+// app.get("/", (request, response) => {
+//   response.render('./index');
+// });
 
 // router configuration
 app.use("/api/users", require("./router/userRouter"));
