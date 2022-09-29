@@ -76,7 +76,7 @@ mongoose.connect( process.env.MONGO_DB_LOCAL_URL,
 
 // simple request
 app.get("/", (request, response) => {
-  response.render('index.html');
+  response.render('./index.html');
 });
 
 // router configuration
