@@ -2,12 +2,12 @@
   "name": "online-shopping",
   "version": "1.0.0",
   "description": "",
-  "main": "main.html",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "main.html --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"main.html\""
   },
   "keywords": [],
   "author": "",
