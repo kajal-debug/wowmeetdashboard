@@ -75,9 +75,9 @@ mongoose.connect( process.env.MONGO_DB_LOCAL_URL,
 
 
 // simple request
-app.get("/", (request, response) => {
-  response.send(`<h2>Welcome to Online Shopping Application Backend</h2>`);
-});
+// app.get("/", (request, response) => {
+//   response.send(`<h2>Welcome to Online Shopping Application Backend</h2>`);
+// });
 
 // router configuration
 app.use("/api/users", require("./router/userRouter"));
