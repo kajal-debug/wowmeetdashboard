@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "index.html",
+    "start": "server.js",
     "server": "nodemon server.js",
-    "client": "/index.html --prefix client",
+    "client": "index.html --prefix client",
     "dev": "concurrently \"npm run server\" \"./index.html client\""
   },
   "keywords": [],
