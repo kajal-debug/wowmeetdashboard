@@ -40,13 +40,13 @@ const port = process.env.PORT || 5000;
 // mongoose.set('useNewUrlParser', true);
 // mongoose.set('useFindAndModify', false);
 // mongoose.set('useCreateIndex', true);
-
-mongoose.connect( process.env.MONGO_DB_LOCAL_URL, 
+const db = 'mongodb+srv://wowexp:kajal123@cluster0.rs8w5i5.mongodb.net/wowexp?retryWrites=true&w=majority'
+mongoose.connect( db||process.env.MONGO_DB_LOCAL_URL, 
   {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    // useFindAndModify: false,
-    // useCreateIndex: true,
+    useFindAndModify: false,
+   useCreateIndex: true,
   })
   .then((response) => {
     console.log("Connected to MongoDB Cloud Successfully......");
