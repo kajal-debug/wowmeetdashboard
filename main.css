@@ -1,0 +1,56 @@
+.body{
+    background-image:url("./Render/Select page/Bg design.svg");
+}
+.mainCard{
+   /* align-items: center; */
+   margin-top: 25%;
+   padding-left: 30%;
+   padding-right: 30%;
+}
+.employee{
+    border: 2px solid white;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    padding: 7px;
+    width: 500px;
+    display: flex;
+    cursor:pointer;
+    justify-content: space-around;
+}
+.admin{
+    margin-top: 10px;
+    border: 2px solid white;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    padding: 7px; 
+    width: 500px;
+    display: flex ;
+    cursor:pointer;
+    justify-content: space-around;
+}
+.employee .form-check-input{
+    background-color: #6f18e1;
+    border: 1px solid white;
+    cursor:pointer;
+}
+.employee #inlineRadio1.form-check-input:checked{
+    /* background-color: rgb(125, 42, 42);
+    border: 1px solid white;
+    color: #6f18e1; */
+    box-shadow: none;
+
+}
+.admin .form-check-input{
+    background-color: #6f18e1;
+    border: 1px solid white;
+    cursor:pointer;
+}
+.admin #inlineRadio1.form-check-input:checked{
+    /* background-color: rgb(125, 42, 42);
+    border: 1px solid white;
+    color: #6f18e1; */
+    box-shadow: none;
+    
+}

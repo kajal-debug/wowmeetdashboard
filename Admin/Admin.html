@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    </head>
+    <body>
+<script src="./Admin.js"></script>
+        <!-- Vertically centered modal -->
+<div class="modal-dialog modal-dialog-centered">
+    
+  </div>
+  
+  <!-- Vertically centered scrollable modal -->
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    
+  </div>
+  <!-- Button trigger modal -->
+<button type="text" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+Admin
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false" >
+    <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header" style="border-bottom:2px solid #cdc6c6; align-self: flex-end !important;width:80%;">
+          <!-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="d-flex" style="justify-content: space-between;">
+          <div  style=" height:47px;border: 2px solid #d0c5c5; margin: 8px;border-radius: 9px;padding-right: 45px;"></div>
+        <div style="border-bottom:2px solid #cdc6c6; align-self: flex-end !important;width:80%;padding: 10px;">
+            firday,june14
+        <div>09:00am-10:00am</div>
+                    </div>
+                    </div>
+                    <div style="display: flex;justify-content: space-between;padding: 10px;color: blue;">  
+                    <div>
+                      Participants
+                    </div>
+                    <div>
+                    5 persons
+                    </div>
+                    </div>
+                    <!-- <div onclick="add()" style=" height:47px;border: 2px solid #d0c5c5; margin: 8px;border-radius: 9px;padding-right: 45px;color: blue;" >+
+          ---          </div> -->
+                    <div class="dropdown d-flex"  style="padding: 5px;">
+                      <div id="drop" class="d-flex"></div>
+                      <button onclick="add()" class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        +
+                      </button>
+                      <ul class="dropdown-menu"  id="ultext" aria-labelledby="dropdownMenuButton1">
+                        <!-- <li><a class="dropdown-item" id="data" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+                      </ul>
+                    </div>
+                    <div class="d-flex" style="justify-content: space-between;">
+                      <div  style=" height:47px;border: 2px solid #d0c5c5; margin: 8px;border-radius: 9px;padding-right: 45px;"></div>
+                    <div style="border-bottom:2px solid #cdc6c6;     padding-bottom: 19px !important;align-self: flex-end !important;width:80%;padding: 10px;">
+                        Notify 30min before meeting
+                                </div>
+      </div>
+      <div class="d-flex" style="justify-content: space-between;">
+        <div  style=" height:47px;border: 2px solid #d0c5c5; margin: 8px;border-radius: 9px;padding-right: 45px;"></div>
+                                <div style="border-bottom:2px solid #cdc6c6;    padding-bottom: 19px !important; align-self: flex-end !important;width:80%;padding: 10px;">
+                                    Meeting Name
+                               
+                                            </div>
+      </div>
+         
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-primary" style="width:100%">Start Meeting</button>
+          <button type="button" class="btn btn-secondary" style="width:100%">Save for latter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </body>
+</html>
