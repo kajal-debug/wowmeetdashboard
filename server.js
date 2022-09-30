@@ -18,6 +18,7 @@ const fs = require("fs");
 //   // }
 
 // );
+const Path = require('path');
 const router = express.Router();
 const Chat = require('./models/User');
 // const server = http.createServer(app);
@@ -91,6 +92,7 @@ mongoose.connect( db||process.env.MONGO_DB_LOCAL_URL,
 // });
 
 // router configuration
+app.use(express.static(path.join(__dirname+"./index.html")))
 app.use("/api/users", require("./router/userRouter"));
 app.use("/api/fetch_user",require("./router/fetch_user"));
 app.use("/api/email",require("./router/mailer"));
@@ -181,21 +183,21 @@ const generateAccessToken=(req,res)=>{
 //       response.end();  
 // }
 // });
-fs.readFile('./index.html', function (err, html) {
+// fs.readFile('./index.html', function (err, html) {
 
-      if (err) throw err;    
+//       if (err) throw err;    
   
-     var servers = server.createServer(function(request, response) {  
-          response.writeHeader(200, {"Content-Type": "text/html"});  
-          response.write(html);  
-          response.end();  
-      }).listen(port);
-      servers.on('error', function (e) {
-        // Handle your error here
-        console.log(e);
-      })
-  });
+//      var servers = server.createServer(function(request, response) {  
+//           response.writeHeader(200, {"Content-Type": "text/html"});  
+//           response.write(html);  
+//           response.end();  
+//       }).listen(port);
+//       servers.on('error', function (e) {
+//         // Handle your error here
+//         console.log(e);
+//       })
+//   });
  
-// http.listen(port,generateAccessToken, nocache, () => {
-//   console.log(`Express Server is started at PORT : ${port}`);
-// });
+http.listen(port,generateAccessToken, nocache, () => {
+  console.log(`Express Server is started at PORT : ${port}`);
+});
