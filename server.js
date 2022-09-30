@@ -93,7 +93,7 @@ mongoose.connect( db||process.env.MONGO_DB_LOCAL_URL,
 
 // router configuration
 app.get('/',function(req, res) {
-  res.sendFile(__dirname + './index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 app.use("/api/users", require("./router/userRouter"));
 app.use("/api/fetch_user",require("./router/fetch_user"));
