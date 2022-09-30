@@ -3,6 +3,7 @@
   link.setAttribute('class', 'nav-item');
 
 link.href = '../Register/Admin.html';
+link.click();
 }
   function admin(){
     
@@ -10,13 +11,21 @@ link.href = '../Register/Admin.html';
     link.setAttribute('class', 'nav-item');
   
 link.href = '../Register/Admin.html';
-
+link.click();
 }
  function Login(){
-    window.location.href = "../Login/Employee.html";
+    const link = document.createElement('a');
+    link.setAttribute('class', 'nav-item');
+  
+link.href = '../Login/Employee.html';
+link.click();
 }
  function adminlogin(){
-    window.location.href = "../Login/Admin.html";
+  const link = document.createElement('a');
+  link.setAttribute('class', 'nav-item');
+
+link.href = '../Login/Admin.html';
+link.click();
 }
  async function empRegister(){
     var name = document.getElementById('name').value
