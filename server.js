@@ -92,7 +92,8 @@ mongoose.connect( db||process.env.MONGO_DB_LOCAL_URL,
 // });
 
 // router configuration
-app.use(express.static(Path.join(__dirname + "/Render")));
+app.use(express.static(__dirname + "/Render"));
+app.use(express.static(__dirname + "/User"));
 app.get('/',function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
