@@ -56,7 +56,7 @@ function adminLogin(){
         if(response.status===200){
             console.log("response",response)
              window.localStorage.setItem('token',response.data.company_id);
-              window.location.href = '../User/index.html';
+              window.location.href = './main.html';
         }
     }).catch(async(errors)=>{
         function myFunction() {
