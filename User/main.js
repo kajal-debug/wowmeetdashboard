@@ -1,12 +1,15 @@
  function employee(){
-    window.location.href = "../Register/Employee.html";
+  const link = document.createElement('a');
+  link.setAttribute('class', 'nav-item');
+
+link.href = '../Register/Admin.html';
 }
   function admin(){
     console.log("port",process.env.PORT)
     const link = document.createElement('a');
     link.setAttribute('class', 'nav-item');
   
-link.href = './Login/Admin.html';
+link.href = '../Register/Admin.html';
 
 }
  function Login(){
