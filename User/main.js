@@ -2,7 +2,8 @@
     window.location.href = "../Register/Employee.html";
 }
   function admin(){
-    window.location.href = "../Register/Admin.html";
+    window.location.href = "./Register/Admin.html";
+
 }
  function Login(){
     window.location.href = "../Login/Employee.html";
