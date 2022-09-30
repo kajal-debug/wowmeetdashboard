@@ -5,7 +5,7 @@
 link.href = '../Register/Admin.html';
 }
   function admin(){
-    console.log("port",process.env.PORT)
+    
     const link = document.createElement('a');
     link.setAttribute('class', 'nav-item');
   
