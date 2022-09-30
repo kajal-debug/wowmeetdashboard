@@ -2,7 +2,11 @@
     window.location.href = "../Register/Employee.html";
 }
   function admin(){
-    window.location.href = "./Register/Admin.html";
+    console.log("port",port,process.env.PORT)
+    const link = document.createElement('a');
+    link.setAttribute('class', 'nav-item');
+  
+link.href = './Login/Admin.html';
 
 }
  function Login(){
