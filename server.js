@@ -92,7 +92,7 @@ mongoose.connect( db||process.env.MONGO_DB_LOCAL_URL,
 // });
 
 // router configuration
-app.use(express.static(path.join(__dirname+"./index.html")))
+app.use(express.static(Path.join(__dirname+"./index.html")))
 app.use("/api/users", require("./router/userRouter"));
 app.use("/api/fetch_user",require("./router/fetch_user"));
 app.use("/api/email",require("./router/mailer"));
