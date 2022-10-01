@@ -289,7 +289,7 @@ function mettingCreated(){
     // console.log("state,state++",state)
     var meetingtime= document.getElementById('date').textContent;
      console.log("state,state++",state,meetingtime,CompanyId)
-  axios.post('/api/metting',{company_id:CompanyId,Mettingname:"mettingroom #8",users:state,meetingtime:meetingtime}).then((response)=>{
+  axios.post('/api/metting',{company_id:CompanyId,Mettingname:"mettingroom #1",users:state,meetingtime:meetingtime}).then((response)=>{
     console.log("meeting res",response)
     window.location.reload(true);
   })
