@@ -177,30 +177,6 @@ const generateAccessToken=(req,res)=>{
   const token = (APP_ID,APP_CERTIFICATE,channelName,uid,role,privilegeExpireTime);
   return res.json({'token':token});
 }
-// fs.readFile('./index.html', function (err, html) {
-
-//   if (err) throw err;    
-
-// (request, response) =>{  
-//       response.writeHeader(200, {"Content-Type": "text/html"});  
-//       response.write(html);  
-//       response.end();  
-// }
-// });
-// fs.readFile('./index.html', function (err, html) {
-
-//       if (err) throw err;    
-  
-//      var servers = server.createServer(function(request, response) {  
-//           response.writeHeader(200, {"Content-Type": "text/html"});  
-//           response.write(html);  
-//           response.end();  
-//       }).listen(port);
-//       servers.on('error', function (e) {
-//         // Handle your error here
-//         console.log(e);
-//       })
-//   });
  
 http.listen(port,generateAccessToken, nocache, () => {
   console.log(`Express Server is started at PORT : ${port}`);
