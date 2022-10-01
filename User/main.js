@@ -4,7 +4,7 @@
   const link = document.createElement('a');
   link.setAttribute('class', 'nav-item');
 
-link.href = '../Register/Admin.html';
+link.href = '../Register/Employee.html';
 link.click();
 }
   function admin(){
@@ -214,7 +214,7 @@ var state=[];
 let adduserdata=0;
 function add(){
   adduserdata++;
-  console.log("data",data)
+  // console.log("data",data)
   let user = []
   if(adduserdata<2){
   meetingdata.map((item)=>{
