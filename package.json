@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js",
-    "open-my-html": "open-cli ./index.html"
+    "server": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
