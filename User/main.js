@@ -70,7 +70,7 @@ function adminLogin(){
     var email = document.getElementById('email').value
     var password = document.getElementById('password').value
     console.log("name++++",adminname,email,password) 
-    axios.post('http://localhost:5000/api/login',{adminname:adminname,email:email,password:password}).then((response)=>{
+    axios.post('/api/login',{adminname:adminname,email:email,password:password}).then((response)=>{
         console.log("response",response)
         if(response.status===200){
             console.log("response",response)
@@ -97,7 +97,7 @@ function logindata(){
     console.log("hiii")
    const company_id = window.localStorage.getItem('token')
      console.log("data___",company_id)
-     axios.post('http://localhost:5000/api/fetch_user',{company_id:company_id}).then(async(response)=>{
+     axios.post('/api/fetch_user',{company_id:company_id}).then(async(response)=>{
         console.log("response",response.data.users.length)
         var text = "";
          let companyname = document.getElementById('companyName')
@@ -151,7 +151,7 @@ function empLogin(){
     var email = document.getElementById('email').value
     var password = document.getElementById('password').value
    // console.log("name++++",adminname,email,password) 
-    axios.post('http://localhost:5000/api/employeelogin',{name:adminname,email:email,password:password}).then(async(response)=>{
+    axios.post('/api/employeelogin',{name:adminname,email:email,password:password}).then(async(response)=>{
         console.log("response",response)
     }).catch(async(errors)=>{
         console.log("err--",errors.response.data.errors.msg)
@@ -279,7 +279,7 @@ function mettingCreated(){
     // console.log("state,state++",state)
     var meetingtime= document.getElementById('date').textContent;
      console.log("state,state++",state,meetingtime,CompanyId)
-  axios.post('http://localhost:5000/api/metting',{company_id:CompanyId,Mettingname:"mettingroom #8",users:state,meetingtime:meetingtime}).then((response)=>{
+  axios.post('/api/metting',{company_id:CompanyId,Mettingname:"mettingroom #8",users:state,meetingtime:meetingtime}).then((response)=>{
     console.log("meeting res",response)
     window.location.reload(true);
   })
@@ -288,7 +288,7 @@ function mettingCreated(){
 let mettinguserDetails = [];
 function fetchMeetingroom(){
   let userdetails = [];
-  axios.post('http://localhost:5000/api/fetching/metting',{company_id:CompanyId}).then((response)=>{
+  axios.post('/api/fetching/metting',{company_id:CompanyId}).then((response)=>{
     console.log("meeting res",response)
     response.data.metting.map((item)=>{
       console.log("item",item.userId)
@@ -413,7 +413,7 @@ let forloops =0;
 function details(){
   
   forloops++;
-  axios.post('http://localhost:5000/api/fetch_user',{company_id:CompanyId}).then(async(response)=>{
+  axios.post('/api/fetch_user',{company_id:CompanyId}).then(async(response)=>{
     console.log("response",forloops)
     if(forloops<2){
     var text = "";
@@ -472,7 +472,7 @@ function details(){
 function addparticipent(user){
   var _id = sessionStorage.getItem('id')
   console.log("hii new participent",user)
-  axios.post('http://localhost:5000/api/update/mettinguser',{_id:_id,users:user}).then((response)=>{
+  axios.post('/api/update/mettinguser',{_id:_id,users:user}).then((response)=>{
     console.log("meeting res",response.data.res)
     response.data.res.map((item)=>{
       console.log("item",item.userId)
@@ -498,7 +498,7 @@ function filebrowser(event){
   var file = event.target.value;
   var Id = sessionStorage.getItem('id')
   console.log("file",file,sessionStorage.getItem('id'))
-  axios.post('http://localhost:5000/api/upload',{file,Id}).then((response)=>{
+  axios.post('/api/upload',{file,Id}).then((response)=>{
     console.log("response",response)
   }).catch((err)=>{
     console.log("err",err)
