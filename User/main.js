@@ -1,5 +1,6 @@
 //  const port = process.env.PORT || 5000;
  function employee(){
+  console.log("hii employee")
   const link = document.createElement('a');
   link.setAttribute('class', 'nav-item');
 
@@ -75,7 +76,12 @@ function adminLogin(){
         if(response.status===200){
             console.log("response",response)
              window.localStorage.setItem('token',response.data.company_id);
-              window.location.href = './main.html';
+             const link = document.createElement('a');
+             link.setAttribute('class', 'nav-item');
+           
+           link.href = '../main.html';
+           link.click();
+              
         }
     }).catch(async(errors)=>{
         function myFunction() {
