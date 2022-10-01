@@ -11,7 +11,7 @@ let MettingSchema = new mongoose.Schema({
     starting:{type:String, required:true
         // default:new Date().toLocaleTimeString(undefined,{timeZone: 'Asia/Kolkata'})
     },
-    file:{type : String , required : true},
+    file:{type : String },
     status:{type:String,default:'active'}
 }, {timestamps : true});
 const Metting = mongoose.model('metting' , MettingSchema);
