@@ -1,4 +1,4 @@
- const port = process.env.PORT || 5000;
+//  const port = process.env.PORT || 5000;
  function employee(){
   const link = document.createElement('a');
   link.setAttribute('class', 'nav-item');
@@ -39,7 +39,7 @@ link.click();
         emppassword=confrompassword
     }
     console.log("name",name,email,id,emppassword)
-    axios.post('http://localhost:5000/api/users/UserRegistation',{name:name,email:email,companyid:id,password:emppassword,isAdmin:'employee'}).then(()=>{})
+    axios.post('/api/users/UserRegistation',{name:name,email:email,companyid:id,password:emppassword,isAdmin:'employee'}).then(()=>{})
 } 
 function adminRegister(){
 
@@ -54,7 +54,7 @@ function adminRegister(){
         password=confrompassword
     }
     console.log("name",adminame,email,companyname,password)
-    axios.post(`http://localhost:5000/api/email/CompanyRegistraion`,{adminname:adminname,email:email,companyname:companyname,password:password,isAdmin:'Admin'}).then((response)=>{
+    axios.post(`/api/email/CompanyRegistraion`,{adminname:adminname,email:email,companyname:companyname,password:password,isAdmin:'Admin'}).then((response)=>{
         console.log(response.status,"respose____")
         if(response.status==200){
             console.log("hii userrss")
