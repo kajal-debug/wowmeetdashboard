@@ -54,7 +54,7 @@ function adminRegister(){
         password=confrompassword
     }
     console.log("name",adminame,email,companyname,password)
-    axios.post(`/api/email/CompanyRegistraion`,{adminname:adminname,email:email,companyname:companyname,password:password,isAdmin:'Admin'}).then((response)=>{
+    axios.post(`http://localhost:5000/api/email/CompanyRegistraion`,{adminname:adminname,email:email,companyname:companyname,password:password,isAdmin:'Admin'}).then((response)=>{
         console.log(response.status,"respose____")
         if(response.status==200){
             console.log("hii userrss")
