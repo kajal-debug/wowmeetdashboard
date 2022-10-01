@@ -40,7 +40,11 @@ link.click();
         emppassword=confrompassword
     }
     console.log("name",name,email,id,emppassword)
-    axios.post('/api/users/UserRegistation',{name:name,email:email,companyid:id,password:emppassword,isAdmin:'employee'}).then(()=>{})
+    axios.post('/api/users/UserRegistation',{name:name,email:email,companyid:id,password:emppassword,isAdmin:'employee'}).then((res)=>{
+      console.log("response",res)
+    }).catch((err)=>{
+      console.log("err",err)
+    })
 } 
 function adminRegister(){
 
