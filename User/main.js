@@ -32,7 +32,7 @@ link.click();
  async function empRegister(){
     var name = document.getElementById('name').value
     var email = document.getElementById('email').value
-    var id = document.getElementById('id').value
+    var companyid = document.getElementById('id').value
     var passwordreq = document.getElementById('password').value
     var confrompassword = document.getElementById('confrompassword').value
     let emppassword;
@@ -40,7 +40,7 @@ link.click();
         emppassword=confrompassword
     }
     console.log("name",name,email,id,emppassword)
-    axios.post('/api/users/UserRegistation',{name:name,email:email,companyid:id,password:emppassword,isAdmin:'employee'}).then((res)=>{
+    axios.post(`/api/users/UserRegistation`,{name:name,email:email,companyid:companyid,password:emppassword,isAdmin:'employee'}).then((res)=>{
       console.log("response",res)
       admin();
     }).catch((err)=>{

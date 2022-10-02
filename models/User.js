@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Comapny = require('./Company');
+// const Comapny = require('./Company');
 let UserSchema = new mongoose.Schema({
     name : {type : String , required : true},
     email : {type : String },
