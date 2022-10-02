@@ -42,6 +42,7 @@ link.click();
     console.log("name",name,email,id,emppassword)
     axios.post('/api/users/UserRegistation',{name:name,email:email,companyid:id,password:emppassword,isAdmin:'employee'}).then((res)=>{
       console.log("response",res)
+      admin();
     }).catch((err)=>{
       console.log("err",err)
     })
