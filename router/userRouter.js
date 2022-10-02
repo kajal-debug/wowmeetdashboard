@@ -94,7 +94,7 @@ router.post('/UserRegistation', [
 
             })
                
-                console.log("no",comnyidd,company_id,id.sequence_id)
+                console.log("no",comnyidd,company_id)
             user = new User({ name, email,companyid:companyid,password,isAdmin,sequence_id:comnyidd?comnyidd:1});
             user = await user.save();
              response.status(200).json({ msg: 'Registration is Success' }); 
