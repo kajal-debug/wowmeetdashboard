@@ -76,11 +76,11 @@ router.post('/UserRegistation', [
             const no = await User.find().then((item)=>{
                 console.log("item",item)
                 item.map((id)=>{console.log("uuid",id.sequence_id,id.companyid,companyid)
-                if(companyid!==id.companyid){
-                    company_id=companyid
-                }else{
-                    return response.status(401).json({ errors: [{ msg: 'give unique id , id already exists' ,user:user}] });
-                }
+                // if(companyid!==id.companyid){
+                //     company_id=companyid
+                // }else{
+                //     return response.status(401).json({ errors: [{ msg: 'give unique id , id already exists' ,user:user}] });
+                // }
                 if (id.sequence_id>= 0){
                     const str = 
                     id.sequence_id + 1
