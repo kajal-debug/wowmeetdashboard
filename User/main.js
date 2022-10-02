@@ -39,7 +39,7 @@ link.click();
     if(confrompassword===passwordreq){
         emppassword=confrompassword
     }
-    console.log("name",name,email,id,emppassword)
+    console.log("name",name,email,companyid,emppassword)
     axios.post(`/api/users/UserRegistation`,{name:name,email:email,companyid:companyid,password:emppassword,isAdmin:'employee'}).then((res)=>{
       console.log("response",res)
       admin();

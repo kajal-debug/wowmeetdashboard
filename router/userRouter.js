@@ -13,9 +13,11 @@ router.post('/UserRegistation', [
 ], async (request, response) => {
     let errors = validationResult(request);
     if (!errors.isEmpty()) {
+        console.log("data frm froted err")
         return response.status(401).json({ errors: errors.array() })
     }
     try {
+        console.log("data frm froted")
         let { name, email,companyid,password,isAdmin } = request.body;
         console.log("data frm froted",name, email,companyid,password,isAdmin)
         // check if the user is exists
