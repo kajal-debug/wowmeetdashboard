@@ -82,20 +82,19 @@ router.post('/UserRegistation', [
                     return response.status(401).json({ errors: [{ msg: 'give unique id , id already exists' ,user:user}] });
                 }
                 if (id.sequence_id>= 0){
-                    const str = 
-                    id.sequence_id + 1
+                    const str =  id.sequence_id + 1
                     const pad = "0000"
-                    const answer = pad + str;
+                    const answer =  str;
                     console.log("answer",answer)
                     comnyidd = answer;
-                    return answer;
+                    return comnyidd = answer;
                   }else{
                     console.log("error")
                   }})
 
             })
                
-                console.log("no",comnyidd,company_id)
+                console.log("no",comnyidd,company_id,id.sequence_id)
             user = new User({ name, email,companyid:companyid,password,isAdmin,sequence_id:comnyidd?comnyidd:1});
             user = await user.save();
              response.status(200).json({ msg: 'Registration is Success' }); 
