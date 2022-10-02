@@ -81,7 +81,7 @@ router.post('/UserRegistation', [
                 }else{
                     return response.status(401).json({ errors: [{ msg: 'give unique id , id already exists' ,user:user}] });
                 }
-                if (id.sequence_id>= 0){
+                if (id.sequence_id> 0){
                     const str =  id.sequence_id + 1
                     const pad = "0000"
                     const answer =  str;
