@@ -94,10 +94,10 @@
             axios.post('/api/login', { email: email, password: password }).then(async (response) => {
                 console.log("response", response)
 
-                localStorage.setItem("name", respose.name);
-                localStorage.setItem("email", respose.email);
-                localStorage.setItem("uid", respose.user_id);
-                localStorage.setItem("usertype", respose.user_type);
+                localStorage.setItem("name", response.name);
+                localStorage.setItem("email", response.email);
+                localStorage.setItem("uid", response.user_id);
+                localStorage.setItem("usertype", response.user_type);
 
                 window.location.href = "./dashboard/";
 
