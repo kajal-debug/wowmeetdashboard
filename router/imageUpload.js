@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
-const Meeting = require('../models/Metting');
+const Meeting = require('../models/Meeting');
 const gravatar = require('gravatar');
 const multer = require('multer');
 const { response } = require('express');

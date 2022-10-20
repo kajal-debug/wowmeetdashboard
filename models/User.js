@@ -6,7 +6,8 @@ let UserSchema = new mongoose.Schema({
     password : { type : String , required : true},
     avatar : {data:Buffer,type : String },
     isAdmin : {type : String , required : true},
-    companyid : {type : String , required : true},
+    companyid : {type : String },
+    companyname : {type : String },
     sequence_id:{type:Number,unique:true},
     status:{type:String,default:'register'},
     // companydetails:{type:mongoose.Schema.Types.ObjectId, ref: Comapny}

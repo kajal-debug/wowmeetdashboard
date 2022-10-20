@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    /* overflow: hidden; */
+}
+
+a {
+    color: blue;
+    /* text-decoration: none; */
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+button {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #0d6efd;
+    background-color: #0d6efd;
+    color: #FFFFFF;
+    font-size: 12px;
+    /* font-weight: bold; */
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    /* text-transform: uppercase; */
+    transition: transform 80ms ease-in;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
+form {
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 65px;
+    /* padding-left: 65px; */
+    height: 100%;
+    text-align: center;
+}
+
+input,
+select {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px !important;
+    /* margin: 1rem 0; */
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+form label {
+    /* margin-top: 1.5rem; */
+    font-size: 1rem;
+}
+
+form div label {
+    display: flex;
+    /* margin-top: 1.5rem; */
+    font-size: 1rem;
+}
+
+form h6 {
+    margin-bottom: 2rem;
+}
+
+form button {
+    margin: 2rem 0;
+    /* padding: 20px 45px; */
+    font-size: 1rem;
+}
+
+/* .container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+    width: 800px;
+    max-width: 100%;
+    min-height: 480px;
+} */
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+    left: 0;
+    width: 35%;
+    z-index: 2;
+}
+
+@media screen and (max-width: 678px) {
+    .sign-in-container {
+        width: 100% !important;
+        z-index: 999 !important;
+    }
+
+    .sign-up-container {
+        width: 100% !important;
+        z-index: 998 !important;
+    }
+
+    .container.right-panel-active .sign-up-container {
+        transform: translateX(0%) !important;
+    }
+
+    .display-quote {
+        display: block !important;
+        padding-top: 1.5rem;
+    }
+
+    .display-quote h3 {
+        font-size: 2.5vh;
+    }
+
+    .display-quote span {
+        font-size: 2vh;
+    }
+
+}
+
+.display-quote {
+    display: none;
+}
+
+.container.right-panel-active .sign-in-container {
+    transform: translateX(200%);
+}
+
+.field-icon {
+    float: right;
+    margin-right: 10px;
+    margin-top: -30px;
+    position: relative;
+    z-index: 2;
+}
+
+.sign-up-container {
+    left: 0;
+    width: 30%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(200%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+
+    0%,
+    49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 35%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-70%);
+}
+
+.overlay {
+    color: #FFFFFF;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.overlay-left img {
+    /* height: 100%;
+    width: 100%;
+    object-fit: cover; */
+    /* margin-bottom: 18vh; */
+    /* border-bottom-right-radius: 2%; */
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.overlay-right img {
+    height: 100%;
+    /* margin-bottom: 18vh; */
+    width: 100%;
+    /* border-bottom-left-radius: 2%; */
+    object-fit: cover;
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+.overlay-panel .quote-cont {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    max-width: 50%;
+    text-align: right;
+    color: #000;
+}
+
+/* .overlay-left .quote-cont{
+    position: absolute;
+    bottom: 22%;
+    left: 10%;
+    max-width: 40%;
+    text-align: left;
+} */
+
+.mobile-cont {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 99999;
+    background: url(../images/not_phone_bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.mobile-cont span {
+    color: rgb(0, 0, 0);
+    font-size: 2.5vh;
+    font-weight: 900;
+    font-family: 'Work Sans';
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    min-width: 250px;
+    bottom: 19%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+}
+
+.mobile-cont .skip-btn {
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 99999;
+    bottom: 7%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #eee;
+    border-radius: 10px;
+    font-weight: 900;
+    font-family: 'Work Sans';
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.powered-by-cont {
+    position: absolute;
+    z-index: 999;
+    bottom: 1.5rem;
+    left: 2rem;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 10px 15px;
+    border-radius: 4rem;
+}
+
+.powered-by-cont p {
+    margin: auto;
+}
+
+.powered-by-cont a {
+    text-decoration: none;
+    color: black;
+}
+
+.powered-by-cont img {
+    width: 100px;
+}

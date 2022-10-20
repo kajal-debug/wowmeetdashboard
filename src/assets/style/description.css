@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.description{
+    z-index: 999;
+    position: absolute;
+}
+
+.close{
+    display: flex;
+    align-items: end;
+}
+
+.cross-stand-alone {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+
+    align-self: end;
+    display: flex;
+  }
+  .cross-stand-alone:before, .cross-stand-alone:after {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #000;
+    border-radius: 4px;
+  }
+  .cross-stand-alone:before {
+    transform: rotate(45deg);
+  }
+  .cross-stand-alone:after {
+    transform: rotate(-45deg);
+  }
+  .cross-stand-alone span {
+    display: block;
+  }
+
+.card{
+    width: 350px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+#date{
+    display: flex;
+    align-self: start;
+}
+
+.card .details{
+    align-self: start;
+}
+
+.card .details h2{
+    font-weight: 600;
+    text-align: start;
+}
+.card .details #place_date{
+    color: #1786FE;
+}
+
+.card .details p{
+    text-transform: uppercase;
+    font-weight: 300;
+}

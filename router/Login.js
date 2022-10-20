@@ -1,65 +1,18 @@
 const express = require('express');
+const app = express();
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
-const User = require('../models/User');
+const User = require('../models/UserModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const authenticate = require('../middlewares/authenticate');
-const Company = require('../models/Company');
+const Company = require('../models/CompanyModel');
+var http = require('http'),
+    fs = require('fs');
 
-router.post('/employeelogin', [
-    body('name').notEmpty().withMessage('admin name is Required'),
-    body('email').notEmpty().withMessage('Email is Required'),
-    body('password').notEmpty().withMessage('Password is Required'),
-], async (request, response) => {
-    let errors = validationResult(request);
-    if (!errors.isEmpty()) {
-        return response.status(401).json({ errors: {msg:"please fill the requrement"}  })
-    }
-    console.log("value",request.body)
-    try {
-        console.log("value",request.body)
-        let { email, password,name } = request.body;
-        console.log("value",request.body)
-        let user = await User.findOne({ email: email });
-        if (!user) {
-            return response.status(401).json({ errors: { msg: 'email Invalid Credentials' }})
-        }
-        // check password
-        let isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return response.status(401).json({ errors: { msg: 'password missmatch' }})
-        }
-         
-        if (name != user.name) {
-            return response.status(401).json({ errors: { msg: ' name Invalid Credentials' }})
-        }
-        // create a token
-        let payload = {
-            user: {
-                id: user.id,
-                name: user.name
-            }
-        };
-        jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: 360000000 }, (err, token) => {
-            if (err) throw err;
-            response.status(200).json({
-                msg: 'Login is Success',
-                token: token
-            });
-        })
-        if(response.status(200)){
-            console.log("hii login user")
-        }
-    }
-    catch (error) {
-        console.error(error);
-        response.status(500).json({ errors: { msg: error.message } });
-    }
-});
 
 router.post('/login', [
-    body('adminname').notEmpty().withMessage('adminname name is Required'),
+    // body('adminname').notEmpty().withMessage('adminname name is Required'),
     body('email').notEmpty().withMessage('Email is Required'),
     body('password').notEmpty().withMessage('Password is Required'),
 ], async (request, response) => {
@@ -69,8 +22,9 @@ router.post('/login', [
          console.log("errors$%",errors.errors)
     }
     try {
-        let { email, password,adminname } = request.body;
+        let { email, password } = request.body;
         let company = await Company.findOne({ email: email });
+        let user = await User.findOne({ email: email });
         if (!company) {
             return response.status(401).json({ errors: { msg: 'email Invalid Credentials' } })
         }
@@ -80,9 +34,9 @@ router.post('/login', [
             return response.status(401).json({ errors: { msg: 'password missmatch' } })
         }
          
-        if (adminname != company.adminname) {
-            return response.status(401).json({ errors: { msg: ' name Invalid Credentials' }})
-        }
+        // if (adminname != company.adminname) {
+        //     return response.status(401).json({ errors: { msg: ' name Invalid Credentials' }})
+        // }
         // create a token
         let payload = {
             company: {
@@ -90,12 +44,13 @@ router.post('/login', [
                 name: company.name
             }
         };
-        jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: 360000000 }, (err, token) => {
+        jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: '5m' }, (err, token) => {
             if (err) throw err;
             response.status(200).json({
                 msg: 'Login is Success',
                 token: token,
-                company_id:company.company_id
+                company_id:company,
+                user:user
             });
         })
         if(response.status(200)){
@@ -110,12 +65,28 @@ router.post('/login', [
         response.status(500).json({ errors: { msg: error.message } });
     }
 });
-
-
-router.get('/', authenticate, async (request, response) => {
+router.post('/auth', authenticate, async (request, response) => {
+    // console.log("user",authenticate,response)
     try {
-        let user = await User.findById(request.user.id).select('-password');
-        response.status(200).json({ user: user });
+        
+// fs.readFile('./src/dashboard/index.html', function (err, html) {
+//     if (err) {
+//         throw err; 
+//     }       
+//     http.createServer(function(request, response) {  
+//         response.writeHeader(200, {"Content-Type": "text/html"});  
+//         response.write(html);  
+//         response.end();  
+//     })
+// });
+//          app.use(express.static(__dirname + "/src/"));
+//          const link = document.createElement('a');
+//   link.setAttribute('class', 'nav-item');
+
+//   link.href = 'http://127.0.0.1:5501/src/dashboard/index.html';
+//   link.click();
+        // let user = await User.findById(request.user.id).select('-password');
+        // response.status(200).json({ user: user });
     }
     catch (error) {
         console.error(error);

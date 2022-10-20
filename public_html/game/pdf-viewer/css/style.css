@@ -1,0 +1,64 @@
+@import url('http://fonts.cdnfonts.com/css/work-sans');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Work Sans';
+}
+
+.top-bar {
+  background: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+.btn {
+  background: coral;
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  padding: 0.7rem 1rem;
+  margin: auto 5px;
+}
+
+.btn:hover {
+  color: coral;
+  background: #fff;
+}
+
+.page-info {
+  margin-left: 1rem;
+}
+
+.share-screen{
+  width: auto;
+  margin: auto;
+  float: right;
+}
+.share-screen p{
+  margin-bottom: 0;
+}
+.share-screen input{
+  float: right;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+}
+
+#zoom-controls{
+    float: right;
+    margin: auto 0;
+}
+#zoom-in, #zoom-out{
+    margin: auto 5px;
+    padding: 0.4rem;
+    font-size: large;
+    cursor: pointer;
+}
+
+.error {
+  background: orangered;
+  color: #fff;
+  padding: 1rem;
+}

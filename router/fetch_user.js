@@ -1,5 +1,5 @@
 const express = require('express');
-const Meeting = require('../models/Metting')
+const Meeting = require('../models/Meeting')
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const MongoClient = require('mongodb').MongoClient;

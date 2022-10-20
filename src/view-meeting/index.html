@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>WoWMeet - Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
+
+    <!-- App css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .chip {
+            display: inline-block;
+            padding: 0 25px;
+            height: 30px;
+            font-size: 16px;
+            line-height: 50px;
+            border-radius: 25px;
+            background-color: #f1f1f1;
+        }
+
+        .bg-ACACFF {
+            background-color: #acacff;
+            border-radius: 20px;
+            padding: 1rem 0;
+
+        }
+    </style>
+
+</head>
+
+<body id="body" class="dark-sidebar">
+    <!-- leftbar-tab-menu -->
+    <div class="left-sidebar">
+        <!-- <div class="brand">
+            <a href="./" class="logo">
+                <span>
+                    <img src="assets/images/" alt="logo-small" class="logo-sm">
+                </span>
+                <span>
+                    <img src="assets/images/" alt="logo-large" class="logo-lg logo-light">
+                    <img src="assets/images/" alt="logo-large" class="logo-lg logo-dark">
+                </span>
+            </a>
+        </div> -->
+        <div class="sidebar-user-pro border-end">
+            <div class="position-relative mx-auto d-flex justify-content-center p-3">
+                <img src="assets/images/users/user-4.jpg" alt="user" class="rounded-circle thumb-xxl">
+            </div>
+            <div class="media-body ms-2 user-detail text-center">
+                <h5 class="font-22 m-0 ">Sachin Pradhan</h5>
+                <p class="opacity-50 mb-0">sachin@wowexp.ai</p>
+            </div>
+        </div>
+
+        <div class="menu-content h-100" data-simplebar>
+            <div class="menu-body navbar-vertical">
+                <div class="collapse navbar-collapse tab-content" id="sidebarCollapse">
+                    <ul class="navbar-nav tab-pane active" id="Main" role="tabpanel">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard/"><i
+                                    class="ti ti-brand-hipchat menu-icon"></i><span>Dashboard</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/meetings/"><i
+                                    class="ti ti-headphones menu-icon"></i><span>Meeting
+                                    rooms</span></a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="/users/"><i class="ti ti-calendar menu-icon"></i><span>Users</span></a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end left-sidenav-->
+
+    <!-- Top Bar Start -->
+    <div class="topbar d-none">
+        <nav class="navbar-custom" id="navbar-custom">
+            <ul class="list-unstyled topbar-nav float-end mb-0">
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#"
+                        role="button" aria-haspopup="false" aria-expanded="false">
+                        <i class="ti ti-bell"></i>
+                        <span class="alert-badge"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
+
+                        <h6
+                            class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
+                            Notifications <span class="badge bg-soft-primary badge-pill">2</span>
+                        </h6>
+                        <div class="notification-menu" data-simplebar>
+                            <!-- item-->
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">2 min ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-chart-arcs"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                        <small class="text-muted mb-0">Dummy text of the printing and industry.</small>
+                                    </div>
+                                    <!--end media-body-->
+                                </div>
+                                <!--end media-->
+                            </a>
+                            <!--end-item-->
+                            <!-- item-->
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">10 min ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-device-computer-camera"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">Meeting with designers</h6>
+                                        <small class="text-muted mb-0">It is a long established fact that a
+                                            reader.</small>
+                                    </div>
+                                    <!--end media-body-->
+                                </div>
+                                <!--end media-->
+                            </a>
+                            <!--end-item-->
+                            <!-- item-->
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">40 min ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-diamond"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">UX 3 Task complete.</h6>
+                                        <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                    </div>
+                                    <!--end media-body-->
+                                </div>
+                                <!--end media-->
+                            </a>
+                            <!--end-item-->
+                            <!-- item-->
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">1 hr ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-drone"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                        <small class="text-muted mb-0">It is a long established fact that a
+                                            reader.</small>
+                                    </div>
+                                    <!--end media-body-->
+                                </div>
+                                <!--end media-->
+                            </a>
+                            <!--end-item-->
+                            <!-- item-->
+                            <a href="#" class="dropdown-item py-3">
+                                <small class="float-end text-muted ps-2">2 hrs ago</small>
+                                <div class="media">
+                                    <div class="avatar-md bg-soft-primary">
+                                        <i class="ti ti-users"></i>
+                                    </div>
+                                    <div class="media-body align-self-center ms-2 text-truncate">
+                                        <h6 class="my-0 fw-normal text-dark">Payment Successfull</h6>
+                                        <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                    </div>
+                                    <!--end media-body-->
+                                </div>
+                                <!--end media-->
+                            </a>
+                            <!--end-item-->
+                        </div>
+                        <!-- All-->
+                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+                            View all <i class="fi-arrow-right"></i>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled topbar-nav mb-0">
+                <li>
+                    <button class="nav-link button-menu-mobile nav-icon" id="togglemenu">
+                        <i class="ti ti-menu-2"></i>
+                    </button>
+                </li>
+                <!-- <li class="hide-phone app-search">
+                    <form role="search" action="#" method="get">
+                        <input type="search" name="search" class="form-control top-search mb-0"
+                            placeholder="Type text...">
+                        <button type="submit"><i class="ti ti-search"></i></button>
+                    </form>
+                </li> -->
+            </ul>
+        </nav>
+    </div>
+    <!-- Top Bar End -->
+
+    <!-- right-tab-menu -->
+    <div class="right-sidebar">
+        <div class=" m-2">
+
+            <div class="  d-flex p-3">
+                <div class="w-100">
+                    <h4 class="m-0 "><span class="w-100">Meating Details</span> </h4>
+                </div>
+
+                <div class="dropdown">
+
+                    <!-- <button class="button-menu-mobile button-icon float-end dropdown-toggle" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false" onclick="add()">
+                        <i class="ti ti-plus"></i>
+                    </button> -->
+
+                    <!-- <div>
+                        <input type="text" id="searchvalue" onkeyup="searchuser(event)" />
+                    </div> -->
+                </div>
+            </div>
+            <div class="row" id="details-meeting">
+                <div class="col-md-6 bg-ACACFF text-center">
+                    <h1 id="time"></h1>
+                </div>
+                <div class="col-md-6 bg-ACACFF text-center">
+                    <h1 id="date"></h1>
+                </div>
+
+
+            </div>
+
+
+            <div class="  d-flex p-3">
+                <div class="w-100">
+                    <h4 class="m-0 "><span class="w-100">Members</span> </h4>
+                    <h6 class="m-0 opacity-50"><span id="team-count">6</span> members</h4>
+                </div>
+                <div class="dropdown">
+
+                    <!-- <button class="button-menu-mobile button-icon float-end dropdown-toggle" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false" onclick="add()">
+                        <i class="ti ti-plus"></i>
+                    </button> -->
+
+                    <!-- <div>
+                        <input type="text" id="searchvalue" onkeyup="searchuser(event)" />
+                    </div> -->
+                </div>
+            </div>
+            <div id="team">
+
+            </div>
+        </div>
+    </div>
+    <!-- end right-sidenav-->
+
+    <div class="page-wrapper">
+        <div class="page-content-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+
+                            <h4 id="meeting-name" class=""></h4>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row" id="div-no-meeting">
+                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center">
+                        <div id="meetings">
+                            <p>Meeting Materials</p>
+                            <div id="materials"></div>
+                            <!-- <a href="../create-meeting/" id="btn-create-meeting" class="btn btn-primary m-1">Create
+                                meeting</a> -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="">
+                        <!-- <a id="add-members" type="button" class="btn btn-light m-1 p-0 float-end">
+                            
+                            <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#exampleModalCenter">
+                                Add members
+                            </button>
+                        </a> -->
+                        <h5 class="">Upload materials</h5>
+                    </div>
+
+                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center">
+                        <p>Drag or drop your meeting files here</p>
+                        <a href="../create-meeting/" id="btn-create-meeting" class="btn btn-primary m-1">Upload
+                            Files</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title m-0" id="exampleModalCenterTitle">Add members</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div id="team" class="col-lg-12">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Javascript  -->
+
+    <!-- <script src="assets/plugins/apexcharts/apexcharts.min.js"></script> -->
+    <!-- <script src="assets/pages/analytics-index.init.js"></script> -->
+
+    <!-- App js -->
+    <script src="assets/js/jquery-3.6.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <!-- <script src="assets/js/app.js"></script> -->
+
+    <script>
+        function fetchMeeting(meetingId) {
+            // var company_id = "10002";
+
+            axios.post('/api/fetchMeetingDetails', { meeting_id: meetingId }).then(async (response) => {
+                // console.log("response", response.data.users.length)
+                let { company_id, meetingName, users, meetingDate, meetingTime, meeting_id } = response.data.meeting;
+
+                $("#meeting-name").text(meetingName);
+                $("#team-count").text(users.length);
+
+                var time = meetingTime;
+                time = time.substring(0, 5);
+                $("#time").text(time);
+
+                var value = meetingDate;
+                var year = value.substring(0, 4);
+                var month = value.substring(5, 7);
+                var day = value.substring(8, 10);
+                // var str = "{day:" + day + ",month:" + month + ",year:" + year + "}";
+
+                const date = new Date(year, month, day);  // 2009-11-10
+                const sMonth = date.toLocaleString('default', { month: 'short' });
+                // console.log(month);
+                $("#date").text(day + "\n" + sMonth)
+
+                var text = "";
+                users.map((item) => {
+                    text += `<div class="sidebar-user-pro media">
+                                <div class="position-relative mx-auto">
+                                    <img src="assets/images/users/user-4.jpg" alt="user"
+                                        class="rounded-circle thumb-md">
+                                </div>
+                                <div class="media-body ms-2 user-detail align-self-center">
+                                    <h5 class="font-14 m-0 ">`+ item + `</h5>
+                                </div>
+                            </div>`;
+                });
+                $("#team").html(text);
+
+            }).catch(async (errors) => {
+            })
+        }
+
+        const params = new URLSearchParams(window.location.search)
+        for (const param of params) {
+            console.log(param)
+            if (params.has('mId')) {
+                var meetingId = params.get('mId');
+                fetchMeeting(meetingId)
+            }
+
+        }
+
+
+        // const usersList = [];
+        // function addUsers(user) {
+        //     // console.log(user)
+
+        //     if (usersList.indexOf(user) === -1) {
+        //         usersList.push(user);
+        //         console.log(usersList);
+        //     }
+        //     // usersList.push(user);
+        // }
+
+        // function fetchUsers() {
+        //     var company_id = "10002";
+
+        //     axios.post('/api/fetchUsers', { company_id: company_id }).then(async (response) => {
+        //         // console.log("response", response.data.users.length)
+        //         $("#team-count").text(response.data.users.length);
+        //         var text = "";
+        //         response.data.users.map((item) => {
+        //             // console.log("item", item.name)
+        //             text += `<div class="sidebar-user-pro media">
+        //                         <div class="position-relative mx-auto">
+        //                             <img src="assets/images/users/user-4.jpg" alt="user"
+        //                                 class="rounded-circle thumb-md">
+        //                         </div>
+        //                         <div class="media-body ms-2 user-detail align-self-center">
+        //                             <h5 class="font-14 m-0 ">`+ item.name + `</h5>
+        //                             <p class="opacity-50 mb-0">`+ item.user_type + `</p>
+        //                         </div>
+        //                         <div class="ms-2 user-detail align-self-center" style="cursor:pointer" onclick="addUsers('`+ item.name + `')">
+        //                             <h5 class="font-14 m-0 ">ADD</h5>
+        //                         </div>
+        //                     </div>`;
+        //         });
+        //         $("#team").html(text);
+        //     }).catch(async (errors) => {
+        //     })
+        // }
+        // fetchUsers();
+
+        // function createMeeting() {
+        //     var company_id = "10002";
+
+        //     var meetingname = document.getElementById('meetingname').value;
+        //     var meetingDate = document.getElementById('date-input').value;
+        //     var meetingTime = document.getElementById('time-input').value;
+
+        //     axios.post(`/api/createMeeting`, { company_id: company_id, meetingName: meetingname, users: usersList, meetingDate: meetingDate, meetingTime: meetingTime })
+        //         .then((response) => {
+        //             // console.log(response.status, "respose____")
+        //             if (response.status == 200) {
+        //                 // adminlogin();
+        //                 window.location.href = '/dashboard/';
+        //             }
+        //         }).catch((err) => {
+        //             console.log("err", err)
+        //         })
+        // }
+    </script>
+
+
+</body>
+<!--end body-->
+
+</html>

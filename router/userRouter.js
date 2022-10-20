@@ -185,7 +185,7 @@ router.post('/profile',[body('_id').notEmpty().withMessage(' _id is Required')],
     }
     try {
         let {_id,name,password,companyid} = request.body;
-       // console.log("data frm froted",Mettingname,new Date().getTime())
+       // console.log("data frm froted",Meetingname,new Date().getTime())
         let profile = await User.findOne({ _id: _id });
         if (profile) {
             const salt = await bcrypt.genSalt(10);
