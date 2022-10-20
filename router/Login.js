@@ -23,7 +23,7 @@ router.post('/login', [
     }
     try {
         let { email, password } = request.body;
-        let company = await Company.findOne({ email: email });
+        // let company = await Company.findOne({ email: email });
         let user = await User.findOne({ email: email });
         if (!company) {
             return response.status(401).json({ errors: { msg: 'email Invalid Credentials' } })

@@ -32,6 +32,7 @@ function register() {
       axios.post(`/api/registration`, { name: name, email: email, company_id: company_id, password: password, usertype: usertype }).then((response) => {
         if (response.status == 200) {
           // adminlogin();
+          window.location.href("./dashboard/");
         }
       }).catch((err) => {
         console.log("err", err)
