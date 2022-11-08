@@ -6,13 +6,12 @@ const User = require('../models/UserModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const authenticate = require('../middlewares/authenticate');
-// const Company = require('../models/CompanyModel');
+const Company = require('../models/CompanyModel');
 var http = require('http'),
     fs = require('fs');
 
 
 router.post('/login', [
-    // body('adminname').notEmpty().withMessage('adminname name is Required'),
     body('email').notEmpty().withMessage('Email is Required'),
     body('password').notEmpty().withMessage('Password is Required'),
 ], async (request, response) => {
@@ -39,22 +38,22 @@ router.post('/login', [
         // }
         // create a token
         let payload = {
-            user: {
-                id: user.id,
-                name: user.name
-            }
+            // company: {
+            //     id: company.id,
+            //     name: company.name
+            // }
         };
         jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: '5m' }, (err, token) => {
             if (err) throw err;
             response.status(200).json({
                 msg: 'Login is Success',
                 token: token,
-                // company_id:company,
+                // company: company,
                 user:user
             });
         })
         if(response.status(200)){
-            console.log("hii login user")
+            console.log("hii login company")
             // window.localStorage.setItem(
             //     token
             // )
@@ -65,15 +64,33 @@ router.post('/login', [
         response.status(500).json({ errors: { msg: error.message } });
     }
 });
-router.post('/auth', authenticate, async (request, response) => {
-    // console.log("user",authenticate,response)
-    try {
+// router.post('/auth', authenticate, async (request, response) => {
+//     // console.log("user",authenticate,response)
+//     try {
         
-    }
-    catch (error) {
-        console.error(error);
-        response.status(500).json({ errors: [{ msg: error.message }] });
-    }
-});
+// // fs.readFile('./src/dashboard/index.html', function (err, html) {
+// //     if (err) {
+// //         throw err; 
+// //     }       
+// //     http.createServer(function(request, response) {  
+// //         response.writeHeader(200, {"Content-Type": "text/html"});  
+// //         response.write(html);  
+// //         response.end();  
+// //     })
+// // });
+// //          app.use(express.static(__dirname + "/src/"));
+// //          const link = document.createElement('a');
+// //   link.setAttribute('class', 'nav-item');
+
+// //   link.href = 'http://127.0.0.1:5501/src/dashboard/index.html';
+// //   link.click();
+//         // let user = await User.findById(request.user.id).select('-password');
+//         // response.status(200).json({ user: user });
+//     }
+//     catch (error) {
+//         console.error(error);
+//         response.status(500).json({ errors: [{ msg: error.message }] });
+//     }
+// });
 
 module.exports = router;

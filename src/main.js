@@ -12,9 +12,10 @@ function register() {
     // var password;
     if (confirmpassword === password) {
       axios.post(`/api/registration`, { name: name, email: email, companyName: companyName, password: password, usertype: usertype }).then((response) => {
-        // console.log(response.status, "respose____")
         if (response.status == 200) {
-          // adminlogin();
+          $('#form').addClass('d-none');
+
+          $("#success-div").removeClass('d-none');
         }
       }).catch((err) => {
         console.log("err", err)
@@ -28,11 +29,12 @@ function register() {
     var confirmpassword = $('#employee_re_password').val();
 
     if (confirmpassword === password) {
-
       axios.post(`/api/registration`, { name: name, email: email, company_id: company_id, password: password, usertype: usertype }).then((response) => {
         if (response.status == 200) {
-          // adminlogin();
-          window.location.href("./dashboard/");
+          // window.location.href("/dashboard/");
+          $('#form').addClass('d-none');
+
+          $("#success-div").removeClass('d-none');
         }
       }).catch((err) => {
         console.log("err", err)

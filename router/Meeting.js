@@ -52,9 +52,7 @@ router.post('/fetchMeetings', [body('company_id').notEmpty().withMessage(' compa
         if (meetings) {
             return response.status(200).json({ meetings: meetings });
         }
-        else {
-            return response.status(401).json({ errors: [{ msg: 'Meeting is Already Exists', meeting: meeting }] });
-        }
+       
     }
     catch (error) {
         console.error(error);
@@ -62,21 +60,18 @@ router.post('/fetchMeetings', [body('company_id').notEmpty().withMessage(' compa
     }
 });
 
-router.post('/fetchMeetingDetails', [body('meeting_id').notEmpty().withMessage(' meeting_id is Required')], async (request, response) => {
+router.post('/fetchMeetingDetails', [body('meeting_id').notEmpty().withMessage(' Meeting id is Required')], async (request, response) => {
     let errors = validationResult(request);
     if (!errors.isEmpty()) {
         return response.status(401).json({ errors: errors.array() })
     }
     try {
         let { meeting_id } = request.body;
-        console.log("request body", request.body)
+        console.log("fetchMeeting - request: ", request.body)
 
         let meeting = await Meeting.findOne({ meeting_id: meeting_id });
         if (meeting) {
             return response.status(200).json({ meeting: meeting });
-        }
-        else {
-            return response.status(401).json({ errors: [{ msg: 'Meeting is Already Exists', meeting: meeting }] });
         }
     }
     catch (error) {

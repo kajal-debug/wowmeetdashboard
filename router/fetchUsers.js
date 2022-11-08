@@ -3,6 +3,7 @@ const router = express.Router();
 
 // const Meeting = require('../models/Meeting')
 const { body, validationResult } = require('express-validator');
+const authenticate = require('../middlewares/authenticate');
 
 // const MongoClient = require('mongodb').MongoClient;
 // const url = "mongodb://127.0.0.1:27017/";
@@ -11,7 +12,7 @@ const Comapny = require('../models/CompanyModel');
 const User = require('../models/UserModel');
 
 
-router.post('/fetchUsers', [body('company_id').notEmpty().withMessage('company_id is Required')], async function (request, response) {
+router.post('/fetchUsers'/*, authenticate*/,[body('company_id').notEmpty().withMessage('company_id is Required')], async function (request, response) {
   let errors = validationResult(request);
   if (!errors.isEmpty()) {
     return response.status(401).json({ errors: { msg: "please fill the requrement" } })

@@ -8,6 +8,8 @@ const Comapny = require('../models/Company');
 const User = require('../models/User');
 
 
+// MAil link approval.
+
  router.post('/approve',[],async function(req,res){
   console.log("response0",req.body)
   let data = User.updateOne({email:req.body.email},{$set: {

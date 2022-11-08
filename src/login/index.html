@@ -92,21 +92,25 @@
             // console.log("name++++", email, password)
 
             axios.post('/api/login', { email: email, password: password }).then(async (response) => {
-                console.log("response", response)
+                console.log("response", response.data)
+                var token = response.data.token
+                var user = response.data.user
 
-                localStorage.setItem("name", response.name);
-                localStorage.setItem("email", response.email);
-                localStorage.setItem("uid", response.user_id);
-                localStorage.setItem("usertype", response.user_type);
+                localStorage.setItem("name", user.name);
+                localStorage.setItem("email", user.email);
+                localStorage.setItem("uid", user.user_id);
+                localStorage.setItem("usertype", user.user_type);
+                localStorage.setItem("company_id", user.company_id);
 
-                window.location.href = "../dashboard/";
+                localStorage.setItem("token", token);
 
-
+                window.location.href = "/dashboard/";
             }).catch(async (errors) => {
                 console.log("err--", errors)
 
             })
         }
+
         document.getElementById("login").addEventListener("click", login);
 
     </script>

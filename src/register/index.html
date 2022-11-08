@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="assets/style/login.css">
     <link rel="stylesheet" href="assets/style/description.css">
-   
+
 </head>
 
 <body>
@@ -27,7 +27,7 @@
 
         <div class="form-container sign-up-container">
 
-            <form style="align-items: start;">
+            <form id="form" style="align-items: start;">
                 <h1 style="padding-top: 15px">Namaste, Register here</h1>
                 <!-- <h6>Already a member? <a class="ghost" id="signin" style="color:blue;">Login</a></h6> -->
 
@@ -84,12 +84,20 @@
                         placeholder="Confirm Password" required>
 
                     <button type="button" name="employee_signup" onclick="register()">REGISTER</button>
-                    
+
                 </div>
-                <p class="d-flex justify-content-center position-absolute align-items-center justify-items-center justify-self-center align-self-center align-content-center text-align-center" style="bottom:0">
+                <p class="d-flex justify-content-center position-absolute align-items-center justify-items-center justify-self-center align-self-center align-content-center text-align-center"
+                    style="bottom:0">
                     Already have an account? <a class="pl-1" href="../login/">Login </a>
                 </p>
             </form>
+            <form id="success-div" style="align-items: start;" class="d-none">
+                <h1 style="padding-top: 15px">Your registration request is sent to your admin.</h1>
+                <p>Once approved, you'll get notified.</p>
+                <button type="button" name="employee_signup" onclick="window.location.href='../login/'">Login</button>
+            </form>
+
+
         </div>
 
         <div class="overlay-container">
