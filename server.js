@@ -58,7 +58,7 @@ app.use(express.static('./public_html/libs'));
  */
 app.use("/api", require("./router/registration"));
 // app.use("/api/email", require("./router/mailer"));
-app.use("/api", require("./router/login"));
+app.use("/api", require("./router/Login"));
 // app.use("/api", require("./router/Login"));
 app.use("/api", require("./router/fetchUsers"));
 // app.use("/api/fetch_user", require("./router/fetch_user"));
