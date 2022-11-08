@@ -1,7 +1,7 @@
 // const APP_ID = "c571a826abef48969b21947e67ef2dcf"
 const APP_ID = "f1e5deb0b0634f0cafe5c19df9e61e5b"
 
-const TOKEN = "007eJxTYPC0aT+72zU/KsJ8sYTJr+uft9fpxepHhc83XvKmXKPHb7MCQ5phqmlKapJBkoGZsUmaQXJiWqppsqFlSpplqhlQKmnryozkhkBGBr0dXoyMDBAI4rMw5CZm5jEwAABIvB+r"
+const TOKEN = "007eJxTYGB+EfR8b6W8wSxznXkZeSUFa56oLXJk3PXbxIvN9PCadk4FhjTDVNOU1CSDJAMzY5M0g+TEtFTTZEPLlDTLVDOgVNI+o6zkhkBGhpyFKSyMDBAI4rMw5CZm5jEwAAD1sx52"
 const CHANNEL = "main"
 
 
