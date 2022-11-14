@@ -103,7 +103,7 @@
             var password = document.getElementById('password').value
             console.log("name++++", email, password)
 
-            axios.post('http://localhost:5001/api/login', { email: email, password: password }).then(async (response) => {
+            axios.post('/api/login', { email: email, password: password }).then(async (response) => {
                 console.log("response", response.data)
                 var token = response.data.token
                 var user = response.data.user
