@@ -12,7 +12,7 @@ const Comapny = require('../models/CompanyModel');
 const User = require('../models/UserModel');
 
 
-router.post('/fetchUsers'/*, authenticate*/,[body('company_id').notEmpty().withMessage('company_id is Required')], async function (request, response) {
+router.post('/fetchUsers', authenticate,[body('company_id').notEmpty().withMessage('company_id is Required')],async function (request, response) {
   let errors = validationResult(request);
   if (!errors.isEmpty()) {
     return response.status(401).json({ errors: { msg: "please fill the requrement" } })
@@ -21,7 +21,7 @@ router.post('/fetchUsers'/*, authenticate*/,[body('company_id').notEmpty().withM
   // let company = Comapny.findOne({ company_id: request.body.company_id }).then(async (result) => {
 
 
-  const users = await User.find({ company_id: request.body.company_id, _status: "ACT" });
+  const users = await User.find({ company_id: request.body.company_id, _status: "ACT" })
 
   // const userMap = {};
   // users.forEach((user) => {
@@ -34,7 +34,125 @@ router.post('/fetchUsers'/*, authenticate*/,[body('company_id').notEmpty().withM
   //   return response.status(401).json({ errors: { msg: 'companyid Invalid Credentials' } })
   // }
   response.status(200).json({ msg: 'Successfully fetch data', users: users });
+  // }).catch((err) => {
 
+  //   response.status(404).json({ msg: "id miss match", err: err })
+  // })
+});
+router.post('/requestUsers', authenticate,[body('company_id').notEmpty().withMessage('company_id is Required')],async function (request, response) {
+  let errors = validationResult(request);
+  if (!errors.isEmpty()) {
+    return response.status(401).json({ errors: { msg: "please fill the requrement" } })
+  }
+  // console.log("company_id", req.body, req.query.company_id)
+  // let company = Comapny.findOne({ company_id: request.body.company_id }).then(async (result) => {
+
+
+  const users = await User.find({ company_id: request.body.company_id, _status: "REG" })
+
+  // const userMap = {};
+  // users.forEach((user) => {
+  //   userMap[user._id] = user;
+  // });
+
+  // res.send(userMap);
+  // let users = await User.find({ companyid: result.company_id });
+  // if (!user) {
+  //   return response.status(401).json({ errors: { msg: 'companyid Invalid Credentials' } })
+  // }
+  response.status(200).json({ msg: 'Successfully fetch data', users: users });
+  // }).catch((err) => {
+
+  //   response.status(404).json({ msg: "id miss match", err: err })
+  // })
+});
+router.post('/DeleteUsers', authenticate,[body('name').notEmpty().withMessage('company_id is Required')],async function (request, response) {
+  let errors = validationResult(request);
+  if (!errors.isEmpty()) {
+    return response.status(401).json({ errors: { msg: "please fill the requrement" } })
+  }
+  // console.log("company_id", req.body, req.query.company_id)
+  // let company = Comapny.findOne({ company_id: request.body.company_id }).then(async (result) => {
+
+
+  const users = await User.findOneAndUpdate(
+    { "name": request.body.name}, // Filter
+    {$set:  {_status: "DCT"}},(err)=>{
+      if(err) {return res.status(401).json({
+          error: true,
+          code: 115,
+          message: "Erro to update user!"
+      })}else{
+        // response.status(200).json({msg:"successfully Deleteed"})
+        response.status(200).json({ msg: 'successfully Deleteed' });
+        // response.redirect('user')
+      }
+  }// Update
+)
+// .then(() => {
+//   response.status(200).json({msg:"successfully Deleteed",user:users})
+// })
+// .catch((err) => {
+//   response.status(401).json({ errors: { msg: "please fill the requrement" } })
+// })
+
+  // const userMap = {};
+  // users.forEach((user) => {
+  //   userMap[user._id] = user;
+  // });
+
+  // res.send(userMap);
+  // let users = await User.find({ companyid: result.company_id });
+  // if (!user) {
+  //   return response.status(401).json({ errors: { msg: 'companyid Invalid Credentials' } })
+  // }
+  response.status(200).json({ msg: 'Successfully fetch data', users: users });
+  // }).catch((err) => {
+
+  //   response.status(404).json({ msg: "id miss match", err: err })
+  // })
+});
+router.post('/AcceptUsers', authenticate,[body('name').notEmpty().withMessage('company_id is Required')],async function (request, response) {
+  let errors = validationResult(request);
+  if (!errors.isEmpty()) {
+    return response.status(401).json({ errors: { msg: "please fill the requrement" } })
+  }
+  // console.log("company_id", req.body, req.query.company_id)
+  // let company = Comapny.findOne({ company_id: request.body.company_id }).then(async (result) => {
+
+
+  const users = await User.findOneAndUpdate(
+    { "name": request.body.name}, // Filter
+    {$set:  {_status: "ACT"}},(err)=>{
+      if(err) {return res.status(401).json({
+          error: true,
+          code: 115,
+          message: "Erro to update user!"
+      })}else{
+        // response.status(200).json({msg:"successfully Deleteed"})
+        response.status(200).json({ msg: 'successfully Deleteed',user:users });
+        // response.redirect('user')
+      }
+  }// Update
+)
+// .then(() => {
+//   response.status(200).json({msg:"successfully Deleteed",user:users})
+// })
+// .catch((err) => {
+//   response.status(401).json({ errors: { msg: "please fill the requrement" } })
+// })
+
+  // const userMap = {};
+  // users.forEach((user) => {
+  //   userMap[user._id] = user;
+  // });
+
+  // res.send(userMap);
+  // let users = await User.find({ companyid: result.company_id });
+  // if (!user) {
+  //   return response.status(401).json({ errors: { msg: 'companyid Invalid Credentials' } })
+  // }
+  response.status(200).json({ msg: 'Successfully fetch data', users: users });
   // }).catch((err) => {
 
   //   response.status(404).json({ msg: "id miss match", err: err })

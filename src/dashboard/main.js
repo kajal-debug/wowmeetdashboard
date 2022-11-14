@@ -1,7 +1,7 @@
 /**Fetch Users */
 function fetchUsers() {
-  var company_id = "10002";
-
+  var company_id = localStorage.company_id;
+  axios.defaults.headers.common['x-auth-token'] = localStorage.token;
   axios.post('/api/fetchUsers', { company_id: company_id }).then(async (response) => {
     // console.log("response", response.data.users.length)
     $("#team-count").text(response.data.users.length);
@@ -26,7 +26,7 @@ fetchUsers()
 
 /**Fetch Meetings */
 function fetchMeetings() {
-  var company_id = "10002";
+  var company_id = localStorage.company_id;
 
   axios.post('/api/fetchMeetings', { company_id: company_id }).then(async (response) => {
     // console.log("response", response.data.users.length)

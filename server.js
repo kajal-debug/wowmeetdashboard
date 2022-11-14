@@ -4,7 +4,8 @@ const server = require('http')
 const http = server.createServer(app);
 const cors = require("cors");
 const io = require('socket.io')(http);
-
+const session = require('express-session');
+const flash = require('connect-flash');
 const dotEnv = require("dotenv");
 dotEnv.config({ path: "./.env" });
 
@@ -29,6 +30,13 @@ const router = express.Router();
 // const mongoose = require('mongodb').MongoClient;
 // configure cors
 app.use(cors());
+// app.use(session({
+//   secret:'webport',
+//   cookie:{maxAge:60000},
+//   saveUninitialized:false,
+//   resave:false
+// }))
+// app.use(flash());
 // app.use((req,res,next)=>{
 //   res.setHeader('Access-Control-Allow-Origin','*');
 //   res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
@@ -73,7 +81,7 @@ app.use("/api", require("./router/fetchMeetingsNotes"));
 // app.use("/api", require("./router/sequence"));
 // app.use("/api", require("./router/Meeting"));
 // app.use("/api", require('./router/Meetingsequence'))
-// app.use("/api", require('./router/imageUpload'));
+ app.use("/api", require('./router/imageUpload'));
 // app.get('/api/chats', require("./router/chat"));
 // app.use('/api', require("./router/approve"));
 /**

@@ -14,7 +14,7 @@ let authenticate = (request , response , next) => {
         next();
     }
     catch (error) {
-        response.status(401).json({msg : 'Token is not valid'});
+        response.status(501).json({msg : 'Token is not valid'});
     }
 };
 module.exports = authenticate;

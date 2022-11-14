@@ -345,7 +345,7 @@
 
     <script>
         function fetchMeeting(meetingId) {
-            // var company_id = "10002";
+            // var company_id = localStorage.company_id;
 
             axios.post('/api/fetchMeetingDetails', { meeting_id: meetingId }).then(async (response) => {
                 // console.log("response", response.data.users.length)
@@ -410,7 +410,7 @@
         // }
 
         // function fetchUsers() {
-        //     var company_id = "10002";
+        //     var company_id = localStorage.company_id;
 
         //     axios.post('/api/fetchUsers', { company_id: company_id }).then(async (response) => {
         //         // console.log("response", response.data.users.length)
@@ -439,7 +439,7 @@
         // fetchUsers();
 
         // function createMeeting() {
-        //     var company_id = "10002";
+        //     var company_id = localStorage.company_id;
 
         //     var meetingname = document.getElementById('meetingname').value;
         //     var meetingDate = document.getElementById('date-input').value;

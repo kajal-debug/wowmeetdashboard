@@ -32,10 +32,11 @@ router.post('/login', [
         if (!isMatch) {
             return response.status(401).json({ errors: { msg: 'password missmatch' } })
         }
-         
-        // if (adminname != company.adminname) {
-        //     return response.status(401).json({ errors: { msg: ' name Invalid Credentials' }})
-        // }
+         console.log("user._status",user._status,user._status==="ACT")
+        if (user._status!="ACT") {
+            console.log("user._status",user._status)
+            return response.status(401).json({ errors: { msg: ' name Invalid Credentials' }})
+        }
         // create a token
         let payload = {
             // company: {
@@ -43,7 +44,7 @@ router.post('/login', [
             //     name: company.name
             // }
         };
-        jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: '5m' }, (err, token) => {
+        jwt.sign(payload, process.env.JWT_SECRET_KEY, { expiresIn: '60m' }, (err, token) => {
             if (err) throw err;
             response.status(200).json({
                 msg: 'Login is Success',

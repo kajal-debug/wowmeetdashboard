@@ -1,4 +1,5 @@
 /**Registration for both admin and employee */
+axios.defaults.headers.common['x-auth-token'] = localStorage.token;
 function register() {
   var usertype = $('#usertype').val()
 
@@ -67,7 +68,7 @@ function login() {
 
 /**Fetch Users */
 function fetchUsers() {
-  var company_id = "10002";
+  var company_id = localStorage.company_id;
 
   axios.post('/api/fetchUser', { company_id: company_id }).then(async (response) => {
     console.log("response", response.data.users.length)
@@ -98,7 +99,7 @@ function fetchUsers() {
             </div>
           </li>` ;
       ul.innerHTML = text;
-      companyname.appendChild(ul)
+      // companyname.appendChild(ul)
     }
 
     // var span = document.createElement('span')

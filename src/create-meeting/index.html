@@ -53,14 +53,14 @@
                             <a class="nav-link" href="/dashboard/"><i
                                     class="ti ti-brand-hipchat menu-icon"></i><span>Dashboard</span></a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="/meetings/"><i
                                     class="ti ti-headphones menu-icon"></i><span>Meeting
                                     rooms</span></a>
-                        </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="/users/"><i class="ti ti-calendar menu-icon"></i><span>Users</span></a>
                         </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/"><i class="ti ti-calendar menu-icon"></i><span>Users</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -232,9 +232,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="page-title-box">
+                        <div class="page-title-box" >
 
-                            <h4 class="">Create meeting room</h4>
+                            <h4 class="" >Create meeting room</h4>
                         </div>
                     </div>
                 </div>
@@ -279,6 +279,22 @@
                 </div>
 
                 <div class="row">
+                    <!-- <div class="">
+                        <h5 class="">Meeting materials</h5>
+                    </div>
+                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="meetingmaterial">
+                       
+                    </div> -->
+                    <!-- <div class="">
+                        <h5 class="">Uploading materials</h5>
+                    </div>
+                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="uploadmaterial">
+                        <form  id="fileuploadfor">
+                        <p class="text-primary" id="uploadfile" style="cursor: pointer;">uploadmaterial</p>
+                        <input type="file" id="files" name="img" style="display: none;" multiple />
+                        
+                        </form>
+                    </div> -->
                     <div class="">
                         <a id="add-members" type="button" class="btn btn-light m-1 p-0 float-end">
                             <!-- <h5 class="text-primary d-flex align-items-center">Add members
@@ -290,9 +306,20 @@
                         </a>
                         <h5 class="">Add participants</h5>
                     </div>
-
-                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center">
-                        <p>You can only add members that you have approved and they will be listed here.</p>
+                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="adduser"></div>
+                    <div class="">
+                        <!-- <a id="add-members" type="button" class="btn btn-light m-1 p-0 float-end">
+                            <h5 class="text-primary d-flex align-items-center">Add members
+                            </h5>
+                            <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#exampleModalCenter">
+                                Add members
+                            </button>
+                        </a> -->
+                        <h5 class="">Add suggested people</h5>
+                    </div>
+                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="suggested">
+                        <!-- <p>You can only add members that you have approved and they will be listed here.</p> -->
                     </div>
                 </div>
             </div>
@@ -330,25 +357,59 @@
 
     <script>
         const usersList = [];
+        var createmeetingroom = document.getElementById('createmeetingroom');
+        var fileuploadfor = document.getElementById('fileuploadfor')
+     
+        var uploadfile = document.getElementById('uploadfile');
+        var file = document.getElementById('files');
+        // uploadfile.addEventListener('click',function(){
+        //     console.log("hii used for file upload")
+        //     file.click();
+        // })
+        // file.onchange = function () {
+        //     var filedata ='';
+        //     console.log("file uploaded",file.files[1].name,file.files[0])
+        //    for(var i =0; i<file.files.length;i++){
+        //         filedata += file.files[i].name;
+
+        //    }
+           
+        //     console.log("filedata1234$$",filedata) 
+        //     console.log("filedata",filedata)
+        //     document.getElementById('meetingmaterial').textContent =  `${filedata}`;
+        // };
         function addUsers(user) {
             // console.log(user)
 
             if (usersList.indexOf(user) === -1) {
                 usersList.push(user);
                 console.log(usersList);
+
+              var adduser = document.getElementById('adduser')
+              var divf = document.createElement('span');
+              usersList.map((item)=>{
+                divf.style.backgroundColor = "#21c54f";
+                // divf.style.marginBottom = "30px";
+               divf.style.margin = "20px";
+               divf.style.padding = "10px";
+             divf.textContent=item;
+             adduser.appendChild(divf);
+            //  document.getElementById("addfor").textContent = "remove";
+              })
+             
             }
             // usersList.push(user);
         }
 
         function fetchUsers() {
-            var company_id = "10002";
-
+            var company_id = localStorage.company_id;
+            axios.defaults.headers.common['x-auth-token'] = localStorage.token;
             axios.post('/api/fetchUsers', { company_id: company_id }).then(async (response) => {
                 // console.log("response", response.data.users.length)
                 $("#team-count").text(response.data.users.length);
                 var text = "";
                 response.data.users.map((item) => {
-                    // console.log("item", item.name)
+                    //  console.log("item", item.name)
                     text += `<div class="sidebar-user-pro media">
                                 <div class="position-relative mx-auto">
                                     <img src="assets/images/users/user-4.jpg" alt="user"
@@ -358,36 +419,109 @@
                                     <h5 class="font-14 m-0 ">`+ item.name + `</h5>
                                     <p class="opacity-50 mb-0">`+ item.user_type + `</p>
                                 </div>
-                                <div class="ms-2 user-detail align-self-center" style="cursor:pointer" onclick="addUsers('`+ item.name + `')">
-                                    <h5 class="font-14 m-0 ">ADD</h5>
+                                <div class="ms-2 user-detail align-self-center" style="cursor:pointer ; backgroundcolor:red" onclick="addUsers('`+ item.name + `')">
+                                    <h5 class="font-14 m-0 " id="addfor">ADD</h5>
                                 </div>
                             </div>`;
                 });
                 $("#team").html(text);
             }).catch(async (errors) => {
+                console.log("err",errors)
             })
         }
         fetchUsers();
 
+        function requestUsers() {
+  var company_id = localStorage.company_id;
+  axios.defaults.headers.common['x-auth-token'] = localStorage.token;
+  axios.post('/api/requestUsers', { company_id: company_id }).then(async (response) => {
+    // console.log("response", response.data.users.length)
+    $("#team-count").text(response.data.users.length);
+    var text = "";
+    console.log("response.data.users",Math.floor(response.data.users.length/2))
+    // Math.floor(response.data.users.length/2).map((item)=>{
+    //  text1=  `<div class='row'>
+    //    <div class='col-lg-6 col-md-6 col-sm col-xs'>h</div>
+    //    <div class='col-lg-6 col-md-6 col-sm col-xs'>hmk</div>
+    //    </div>`
+    //    $("#team").html(text1);
+    // })
+    response.data.users.map((item) => {
+    //   console.log("item",item)
+           
+      text += `
+                  <div class="media-body ms-2 user-detail align-self-center">
+                      <h5 class="font-14 m-0 text-warning">`+ item.name + `</h5>
+              </div>`;
+    });
+    // for(var i =0; i<Math.ceil(response.data.users.length/2);i++){
+    //   row = `<div class = 'row'></div>`
+    // }
+    $("#suggested").html(text);
+  }).catch(async (errors) => {
+    toastr["error"](errors.response.data.msg)
+    toastr.options = {
+      "closeButton": true,
+      "newestOnTop": false,
+      "progressBar": true,
+      "positionClass": "toast-top-center",
+    //   "preventDuplicates": false,
+    //   "onclick": null,
+       "showDuration": "3000000",
+    //   "hideDuration": "1000",
+       "timeOut": "50000000",
+    //   "extendedTimeOut": "1000",
+    //   "showEasing": "swing",
+    //   "hideEasing": "linear",
+    //   "showMethod": "fadeIn",
+    //   "hideMethod": "fadeOut"
+    }
+    // console.log("error-*--*",errors.response.data.msg)
+  })
 
+}
+requestUsers()
 
         function createMeeting() {
-            var company_id = "10002";
+            var company_id = localStorage.company_id;
 
             var meetingname = document.getElementById('meetingname').value;
             var meetingDate = document.getElementById('date-input').value;
             var meetingTime = document.getElementById('time-input').value;
+            console.log("files",file.files)
+            // fileuploadfor.addEventListener("submit", (e) => {
+    // e.preventDefault();
+     const formData = new FormData(file.files);
+     console.log("filess",formData)
+    var name = localStorage.name
+    axios.post(`/api/upload?${name}`,file.files, {
+        params:{name:localStorage.name,name1:name},
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        // var img =`<img src=../../config/image${res.data.file.filename}/>`
+        // $("#meetingmaterial").html(img);
+        // document.getElementById('meetingmaterial').textContent=res.data.file.filename;
+        console.log(res.data.file.filename,res.data.file.path);
+        
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+//   });
 
-            axios.post(`/api/createMeeting`, { company_id: company_id, meetingName: meetingname, users: usersList, meetingDate: meetingDate, meetingTime: meetingTime })
-                .then((response) => {
-                    // console.log(response.status, "respose____")
-                    if (response.status == 200) {
-                        // adminlogin();
-                        window.location.href = '/dashboard/';
-                    }
-                }).catch((err) => {
-                    console.log("err", err)
-                })
+            // axios.post(`/api/createMeeting`, { company_id: company_id, meetingName: meetingname, users: usersList, meetingDate: meetingDate, meetingTime: meetingTime })
+            //     .then((response) => {
+            //         // console.log(response.status, "respose____")
+            //         if (response.status == 200) {
+            //             // adminlogin();
+            //             window.location.href = '/dashboard/';
+            //         }
+            //     }).catch((err) => {
+            //         console.log("err", err)
+            //     })
         }
     </script>
 
