@@ -14,7 +14,7 @@ router.post('/createMeeting', [body('meetingName').notEmpty().withMessage(' Meet
         return response.status(401).json({ errors: errors.array() })
     }
     try {
-        let { company_id, meetingName, users, meetingDate, meetingTime } = request.body;
+        let { company_id, meetingName, users, meetingDate, meetingTime,files } = request.body;
 
         let meeting = await Meeting.findOne({ meetingName: meetingName });
         if (meeting) {
@@ -28,7 +28,7 @@ router.post('/createMeeting', [body('meetingName').notEmpty().withMessage(' Meet
             meeting_id = doc.sequence_value;
 
 
-            meeting = new Meeting({ company_id: company_id, meetingName: meetingName, users: users, meetingDate: meetingDate, meetingTime: meetingTime, meeting_id: meeting_id });
+            meeting = new Meeting({ company_id: company_id, meetingName: meetingName, users: users, meetingDate: meetingDate, meetingTime: meetingTime, meeting_id: meeting_id ,files:files});
             meeting = await meeting.save();
             response.status(200).json({ msg: 'Meeting is Successfully created', id: meeting_id });
         }
@@ -93,27 +93,7 @@ router.post('/updateMeeting', [body('_id').notEmpty().withMessage('_id is Requir
         // console.log("data frm froted",Meetingname,new Date().getTime())
         var datanewusers = [];
         let meeting = await Meeting.find({ _id: _id })
-        // .then(async(response)=>{
-
-        //     response.map((item)=>{
-        //         var adduser =item.userId
-        //         console.log("backenditem",item.userId,request.body.users)
-        //         var newuser = [...adduser,request.body.users]
-        //         console.log("newuser",newuser)
-        //        return datanewusers = newuser;
-        //     })
-        //     let users =  await Meeting.updateOne({_id:_id},{$set: {
-        //         userId:newuser
-        //        }},function(err,res){
-        //         if(err){
-        //             // res.status(401).json({ error: "upladed" ,err:err})
-        //         }else{
-        //             // res.status(200).json({ msg: "successfully upladed" ,res:response})
-        //         }
-        //        });
-        //     console.log("newuser++",newuser,datanewusers)
-        // })
-        // console.log("newuser+",datanewusers)
+        
         if (meeting) {
             console.log("userId", meeting, request.body.users, datanewusers)
             meeting.map((item) => {

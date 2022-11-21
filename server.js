@@ -4,12 +4,14 @@ const server = require('http')
 const http = server.createServer(app);
 const cors = require("cors");
 const io = require('socket.io')(http);
-const session = require('express-session');
-const flash = require('connect-flash');
+const path = require('path');
+// const Grid = require('gridfs-stream');
+// const mongoose = require('mongoose');
+
 const dotEnv = require("dotenv");
 dotEnv.config({ path: "./.env" });
 
-require("./config/database").connect();
+ require("./config/database").connect();
 
 const APP_ID = process.env.APP_ID;
 const APP_CERTIFICATE = process.env.APP_CERTIFICATE;
@@ -22,7 +24,7 @@ const fs = require("fs");
 //   // }
 
 // );
-const Path = require('path');
+const { connect } = require("http2");
 const router = express.Router();
 // const Chat = require('./models/User');
 // const server = http.createServer(app);
@@ -49,7 +51,7 @@ app.use(express.json());
 const port = process.env.PORT || 5001;
 
 app.use(express.static(__dirname + '/src'));
-// app.use(express.static(__dirname + '/public_html'));
+ app.use(express.static(__dirname + '/src/uploads'));
 app.use(express.static('./public_html/game/'));
 app.use(express.static('./public_html/libs'));
 
@@ -60,7 +62,23 @@ app.use(express.static('./public_html/libs'));
 // app.get('/', function (req, res) {
 //   res.sendFile(__dirname + '/dashboard/');
 // });
-
+////file upload
+// let gfs;
+// const conn = mongoose.connection;
+// conn.once("open",function(){
+//   gfs = Grid(conn.db , mongoose.mongo);
+//   gfs.collection('collection_users')
+// });
+// app.get('file/:filename',async(req,res)=>{
+//   try{
+//     const file = await gfs.files.findOne({filename:req.params.filename});
+//     const readStream = gfs.createReadStream(file.filename);
+//     readStream.pipe(res);
+//   } catch(err){
+//     consolelog()
+//   }
+// })
+//ed fileupload
 /**
  *  Backend APIs 
  */
@@ -74,6 +92,7 @@ app.use("/api", require("./router/Meeting"));
 // app.use("/api", require("./router/Meeting"));
 app.use("/api", require("./router/saveNotes"));
 app.use("/api", require("./router/fetchMeetingsNotes"));
+// app.use("/api", require("./router/imageprofileupload"));
 
 
 // app.use("/api/users", require("./router/userRouter"));
@@ -87,7 +106,7 @@ app.use("/api", require("./router/fetchMeetingsNotes"));
 /**
  * End Backend APIs 
  */
-
+// app.use('/static',express.static(path.join(__dirname,'./config/profileimage')))
 const nocache = (req, res, next) => {
   res.header('Cache-Control', 'private,no-cache,no-store,must-revalidate');
   res.header('Expires', '-1');

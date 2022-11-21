@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARUN Walking - by WoWExp</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <!--<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>-->
+    <style>
+        model-viewer {
+            height: 88vh;
+            width: 100%;
+        }
+        #ar-button {
+            background-image: url(augmented-reality.png);
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            background-position: 12px 50%;
+            background-color: #6F18E1;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            bottom: 132px;
+            padding: 0px 16px 0px 40px;
+            font-family: Roboto Bold, Helvetica Neue, sans-serif;
+            font-size: 14px;
+            color: #FFF;
+            height: 36px;
+            line-height: 36px;
+            border-radius: 18px;
+            border: 1px solid #6F18E1;
+            text-align: center;
+        }
+        #ar-button:active {
+            background-color: #6F18E1;
+        }
+        #ar-button:focus {
+            outline: none;
+        }
+        #ar-button:focus-visible {
+            outline: 1px solid #6F18E1;
+        }
+        @keyframes circle {
+            from {
+                transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
+            }
+
+            to {
+                transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
+            }
+        }
+
+        @keyframes elongate {
+            from {
+                transform: translateX(100px);
+            }
+
+            to {
+                transform: translateX(-100px);
+            }
+        }
+
+        model-viewer>#ar-prompt {
+            position: absolute;
+            left: 50%;
+            bottom: 175px;
+            animation: elongate 2s infinite ease-in-out alternate;
+            display: none;
+        }
+
+        model-viewer[ar-status="session-started"]>#ar-prompt {
+            display: block;
+        }
+
+        model-viewer>#ar-prompt>img {
+            animation: circle 4s linear infinite;
+        }
+
+        model-viewer>#ar-failure {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 175px;
+            display: none;
+        }
+
+        model-viewer[ar-tracking="not-tracking"]>#ar-failure {
+            display: block;
+        }
+
+        .slider {
+            width: 100%;
+            text-align: center;
+            overflow: hidden;
+            position: absolute;
+            bottom: 16px;
+        }
+
+        .slides {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .slide {
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            width: 100px;
+            height: 100px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #fff;
+            margin-right: 10px;
+            border-radius: 10px;
+            border: none;
+            display: flex;
+        }
+
+        .slide.selected {
+            border: 2px solid #4285f4;
+        }
+
+        .slide:focus {
+            outline: none;
+        }
+
+        .slide:focus-visible {
+            outline: 1px solid #4285f4;
+        }
+
+        .progress-bar {
+            display: block;
+            width: 33%;
+            height: 10%;
+            max-height: 2%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            border-radius: 25px;
+            box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.5), 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .progress-bar.hide {
+            visibility: hidden;
+            transition: visibility 0.3s;
+        }
+
+        .update-bar {
+            background-color: rgba(255, 255, 255, 0.9);
+            width: 0%;
+            height: 100%;
+            border-radius: 25px;
+            float: left;
+            transition: width 0.3s;
+        }
+
+        .buttons {
+            position: absolute;
+            right: 0;
+            top: 3rem;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        .buttons img {
+            width: 4vw;
+        }
+
+        @media only screen and (max-width:678px) {
+            .buttons img {
+                width: 11vw !important;
+            }
+        }
+
+        @media only screen and (max-width:992px) {
+            .buttons img {
+                width: 7vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="wow-logo.png" style="position:absolute; top:2rem; left:1rem;" width="100px">
+
+    <model-viewer id="model-viewer" enable-pan src="./Arun_walking_animation/Blue_shirt.glb" ios-src="Model_1.glb"
+        ar-scale="fixed" ar ar-modes="scene-viewer quick-look webxr" camera-controls shadow-intensity="1" autoplay>
+        <div class="progress-bar hide" slot="progress-bar">
+            <div class="update-bar"></div>
+        </div>
+        <div class="buttons">
+            <img id="btn-1" src="./buttons/without border/Frame 11.png" style="border:3px solid #6F18E1; border-radius:15px; background-color: white;" />
+            <img src="./buttons/without border/4.png" id="btn-2" style="border:3px solid white; border-radius:15px" />
+            <img src="./buttons/without border/2.png" id="btn-3" style="border:3px solid white; border-radius:15px; background-color: white;" />
+            <img src="./buttons/without border/1.png" id="btn-4" style="border:3px solid white; border-radius:15px" />
+        </div>
+        <button slot="ar-button" id="ar-button">
+            View in AR
+        </button>
+    </model-viewer>
+
+    <script>
+        // Handles loading the events for <model-viewer>'s slotted progress bar
+        const onProgress = (event) => {
+            const progressBar = event.target.querySelector('.progress-bar');
+            const updatingBar = event.target.querySelector('.update-bar');
+            updatingBar.style.width = `${event.detail.totalProgress * 100}%`;
+            if (event.detail.totalProgress === 1) {
+                progressBar.classList.add('hide');
+            } else {
+                progressBar.classList.remove('hide');
+                if (event.detail.totalProgress === 0) {
+                    // event.target.querySelector('.center-pre-prompt').classList.add('hide');
+                }
+            }
+        };
+        document.querySelector('model-viewer').addEventListener('progress', onProgress);
+
+        const modelViewer = document.getElementById("model-viewer");
+        const img1 = document.getElementById("btn-1");
+        const img4 = document.getElementById('btn-4');
+        const img3 = document.getElementById('btn-3');
+        const img2 = document.getElementById('btn-2');
+
+        modelViewer.addEventListener("load", () => {
+
+            img2.addEventListener('click', () => {
+                modelViewer.src = './Arun_walking_animation/Hoodie.glb';
+                img1.style.border = '3px solid white';
+                img3.style.border = '3px solid white';
+                img4.style.border = '3px solid white';
+                img2.style.border = '3px solid #6F18E1';
+            });
+            img3.addEventListener('click', () => {
+                modelViewer.src = './Arun_walking_animation/Suit.glb';
+                img1.style.border = '3px solid white';
+                img2.style.border = '3px solid white';
+                img4.style.border = '3px solid white';
+                img3.style.border = '3px solid #6F18E1';
+            });
+            img1.addEventListener('click', () => {
+                modelViewer.src = './Arun_walking_animation/Blue_shirt.glb';
+                img1.style.border = '3px solid #6F18E1';
+
+                img4.style.border = '3px solid white';
+                img3.style.border = '3px solid white';
+                img2.style.border = '3px solid white';
+            });
+            img4.addEventListener('click', () => {
+                modelViewer.src = './Arun_walking_animation/White_shirt.glb';
+
+                img1.style.border = '3px solid white';
+                img2.style.border = '3px solid white';
+                img3.style.border = '3px solid white';
+                img4.style.border = '3px solid #6F18E1';
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

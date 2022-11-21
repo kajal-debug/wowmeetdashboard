@@ -12,6 +12,7 @@
     <!-- <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
 
     <!-- App css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.css" rel="stylesheet" type="text/css" />
@@ -38,10 +39,22 @@
         <div class="sidebar-user-pro border-end">
             <div class="position-relative mx-auto d-flex justify-content-center p-3">
                 <img src="assets/images/users/user-4.jpg" alt="user" class="rounded-circle thumb-xxl">
+                <div id="edit" style=" position: absolute; z-index: 1;
+                margin: 20px;
+                /* color: #2d39cc; */
+                margin-right: -31px;
+                font-size: 20px;
+                bottom: 0;">
+                    <i class="far fa-edit" style="
+                    color: #2d39cc;
+                   
+                    font-size: 20px;
+                    " ></i>
+                </div>
             </div>
             <div class="media-body ms-2 user-detail text-center">
-                <h5 class="font-22 m-0 ">Sachin Pradhan</h5>
-                <p class="opacity-50 mb-0">sachin@wowexp.ai</p>
+                <h5 class="font-22 m-0 " id="display-name">Sachin Pradhan</h5>
+                <p class="opacity-50 mb-0" id="display-mail">sachin@wowexp.ai</p>
             </div>
         </div>
 
@@ -203,25 +216,25 @@
             </div>
             <h4 class="">Steps</h4>
 
-            <div class="py-3">
+            <div class="py-3" id="environmentstep">
                 Step 1
                 <h5 class="">Select environment</h5>
                 <i>The selected environment will be your meeting room.</i>
             </div>
 
-            <div class="py-3">
+            <div class="py-3" id="meetingdetailsstep">
                 Step 2
                 <h5 class="">Add meeting details</h5>
                 <i>Add meeting name, date & time for the meeting room.</i>
             </div>
 
-            <div class="py-3">
+            <div class="py-3" id="participantsstep">
                 Step 3
                 <h5 class="">Add participants</h5>
                 <i>You can only add the members you approved.</i>
             </div>
 
-            <button id="createmeeting" type="button" class="btn btn-primary  w-100" onclick="createMeeting()">Create
+            <button id="createmeeting" type="button" class="btn btn-primary  w-100" id="createmeeting" onclick="createMeeting()">Create
                 meeting</button>
         </div>
     </div>
@@ -240,7 +253,7 @@
                 </div>
 
 
-                <div class="row">
+                <div class="row" id="environment">
                     <h5 class="">Select meeting room environment</h5>
                     <div class="radio-with-Icon">
                         <p class="col-lg-2 radioOption-Item">
@@ -254,7 +267,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row" id="meetingdetails">
                     <h5 class="">Add meeting details</h5>
 
                     <div class="col-md-5">
@@ -276,46 +289,63 @@
                             <input class="form-control" type="time" value="13:45:00" id="time-input" required>
                         </div>
                     </div>
-                </div>
+                        <div class="">
+                            <h5 class="">Meeting materials</h5>
+                        </div>
+                        <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="meetingmaterial">
+                            <!-- <img src="../../config/image/Employee-2img-1.jpg" alt="noimg" width="300px"> -->
+                        </div>
+                        <div class="">
+                            <h5 class="">Uploading materials</h5>
+                        </div>
+                        <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="uploadmaterial">
+                            <form  id="fileuploadfor">
+                            <p class="text-primary" id="uploadfile" style="cursor: pointer;">uploadmaterial</p>
+                            <input type="file" id="files" name="images" style="display: none;" multiple />
+                            <!-- <button type="submit"  style="display: none;" ></button> -->
+                            </form>
+                        </div>
+                       
+                    </div>
+                    </div>
+                  
 
-                <div class="row">
+                <div class="row" id="participants">
                     <!-- <div class="">
                         <h5 class="">Meeting materials</h5>
                     </div>
                     <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="meetingmaterial">
-                       
-                    </div> -->
-                    <!-- <div class="">
+                         <img src="../../config/image/Employee-2img-1.jpg" alt="noimg" width="300px"> -->
+                    <!-- </div>
+                    <div class="">
                         <h5 class="">Uploading materials</h5>
+                        <i class="fa fa-times-circle"></i>
+                        <i class="fa fa-check-circle"></i>
                     </div>
                     <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="uploadmaterial">
                         <form  id="fileuploadfor">
                         <p class="text-primary" id="uploadfile" style="cursor: pointer;">uploadmaterial</p>
-                        <input type="file" id="files" name="img" style="display: none;" multiple />
-                        
-                        </form>
-                    </div> -->
+                        <input type="file" id="files" name="images" style="display: none;" multiple /> -->
+                        <!-- <button type="submit"  style="display: none;" ></button> -->
+                        <!-- </form>
+                    </div>  -->
                     <div class="">
                         <a id="add-members" type="button" class="btn btn-light m-1 p-0 float-end">
                             <!-- <h5 class="text-primary d-flex align-items-center">Add members
                             </h5> -->
                             <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalCenter">
+                                data-bs-target="#exampleModalCenter" style= "font-weight: 400;
+                                font-size: 17px;
+                                color: blue;
+                                text-transform: uppercase;">
                                 Add members
                             </button>
                         </a>
                         <h5 class="">Add participants</h5>
                     </div>
-                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="adduser"></div>
-                    <div class="">
-                        <!-- <a id="add-members" type="button" class="btn btn-light m-1 p-0 float-end">
-                            <h5 class="text-primary d-flex align-items-center">Add members
-                            </h5>
-                            <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalCenter">
-                                Add members
-                            </button>
-                        </a> -->
+                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt " style="font-size: 13px;"id="adduser"></div>
+                    <div class="" >
+                       
                         <h5 class="">Add suggested people</h5>
                     </div>
                     <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center" id="suggested">
@@ -331,12 +361,12 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="modal-title m-0" id="exampleModalCenterTitle">Add members</h6>
+                    <h6 class="modal-title m-0" id="exampleModalCenterTitle" >Add members</h6>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div id="team" class="col-lg-12">
+                    <div class="">
+                        <div id="team" >
                         </div>
                     </div>
                 </div>
@@ -352,32 +382,81 @@
 
     <!-- App js -->
     <script src="assets/js/jquery-3.6.0.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
-
+    <script src="./main.js"></script>
     <script>
+          document.getElementById('display-name').innerText = localStorage.name;
+        document.getElementById('display-mail').innerText = localStorage.email;
         const usersList = [];
         var createmeetingroom = document.getElementById('createmeetingroom');
         var fileuploadfor = document.getElementById('fileuploadfor')
      
         var uploadfile = document.getElementById('uploadfile');
         var file = document.getElementById('files');
-        // uploadfile.addEventListener('click',function(){
-        //     console.log("hii used for file upload")
-        //     file.click();
-        // })
-        // file.onchange = function () {
-        //     var filedata ='';
-        //     console.log("file uploaded",file.files[1].name,file.files[0])
-        //    for(var i =0; i<file.files.length;i++){
-        //         filedata += file.files[i].name;
+        uploadfile.addEventListener('click',function(){
+            console.log("hii used for file upload")
+            file.click();
+        })
+        fileuploadfor.addEventListener("change", (e) => {
+            console.log("helllo",e.target.files)
+    e.preventDefault();
+     const formData = new FormData(fileuploadfor);
+     console.log("filess",fileuploadfor)
+    var name = localStorage.name
+    axios.post("/api/upload",formData, {
+        params:{name:localStorage.name},
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        // var img =`<img src=../../config/image${res.data.file.filename}/>`
+        // $("#meetingmaterial").html(img);
+        // document.getElementById('meetingmaterial').textContent=res.data.file.filename;
+        console.log(res.data.file);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+        file.onchange = function () {
+            var filedata ='';
+            console.log("file uploaded",file.files[1].name,file.files[0])
+           for(var i =0; i<file.files.length;i++){
+                filedata += file.files[i].name;
 
-        //    }
-           
-        //     console.log("filedata1234$$",filedata) 
-        //     console.log("filedata",filedata)
-        //     document.getElementById('meetingmaterial').textContent =  `${filedata}`;
-        // };
+           }
+           console.log("hii")
+//            fileuploadfor.addEventListener("submit", (e) => {
+//             console.log("helllo",e)
+//     e.preventDefault();
+//      const formData = new FormData(fileuploadfor);
+//      console.log("filess",fileuploadfor,formData)
+//     var name = localStorage.name
+//     axios.post(`/api/upload?${name}`,formData, {
+//         params:{name:localStorage.name,name1:name},
+//         headers: {
+//           "Content-Type": "multipart/form-data",
+//         },
+//       })
+//       .then((res) => {
+//         // var img =`<img src=../../config/image${res.data.file.filename}/>`
+//         // $("#meetingmaterial").html(img);
+//         // document.getElementById('meetingmaterial').textContent=res.data.file.filename;
+//         console.log(res.data.file.filename,res.data.file.path);
+        
+//       })
+//       .catch((err) => {
+//         console.log(err.response);
+//       });
+//   });
+            console.log("filedata1234$$",filedata) 
+            console.log("filedata",filedata)
+            document.getElementById('meetingmaterial').textContent =  `${filedata}`;
+        };
         function addUsers(user) {
             // console.log(user)
 
@@ -385,17 +464,21 @@
                 usersList.push(user);
                 console.log(usersList);
 
-              var adduser = document.getElementById('adduser')
+            //   var adduser = document.getElementById('adduser')
               var divf = document.createElement('span');
+              var addusers = ""
               usersList.map((item)=>{
                 divf.style.backgroundColor = "#21c54f";
                 // divf.style.marginBottom = "30px";
                divf.style.margin = "20px";
                divf.style.padding = "10px";
              divf.textContent=item;
-             adduser.appendChild(divf);
+              addusers += `<span style="background-color:#21c54f;margin:20px; border-radius:4px;
+             padding:10px; ">`+item+` <i class="far fa-times-circle" style="color:white; padding:4px;"></i></span>`
+            //  adduser.appendChild(addusers);
             //  document.getElementById("addfor").textContent = "remove";
-              })
+        })
+        $("#adduser").html(addusers);
              
             }
             // usersList.push(user);
@@ -438,14 +521,6 @@
     // console.log("response", response.data.users.length)
     $("#team-count").text(response.data.users.length);
     var text = "";
-    console.log("response.data.users",Math.floor(response.data.users.length/2))
-    // Math.floor(response.data.users.length/2).map((item)=>{
-    //  text1=  `<div class='row'>
-    //    <div class='col-lg-6 col-md-6 col-sm col-xs'>h</div>
-    //    <div class='col-lg-6 col-md-6 col-sm col-xs'>hmk</div>
-    //    </div>`
-    //    $("#team").html(text1);
-    // })
     response.data.users.map((item) => {
     //   console.log("item",item)
            
@@ -483,46 +558,30 @@
 requestUsers()
 
         function createMeeting() {
+            console.log("hii")
             var company_id = localStorage.company_id;
 
             var meetingname = document.getElementById('meetingname').value;
             var meetingDate = document.getElementById('date-input').value;
             var meetingTime = document.getElementById('time-input').value;
             console.log("files",file.files)
-            // fileuploadfor.addEventListener("submit", (e) => {
-    // e.preventDefault();
-     const formData = new FormData(file.files);
-     console.log("filess",formData)
-    var name = localStorage.name
-    axios.post(`/api/upload?${name}`,file.files, {
-        params:{name:localStorage.name,name1:name},
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        // var img =`<img src=../../config/image${res.data.file.filename}/>`
-        // $("#meetingmaterial").html(img);
-        // document.getElementById('meetingmaterial').textContent=res.data.file.filename;
-        console.log(res.data.file.filename,res.data.file.path);
-        
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
-//   });
+      const files = [];
+      for(var i =0; i<file.files.length;i++){
+                files.push( file.files[i].name) ;
 
-            // axios.post(`/api/createMeeting`, { company_id: company_id, meetingName: meetingname, users: usersList, meetingDate: meetingDate, meetingTime: meetingTime })
-            //     .then((response) => {
-            //         // console.log(response.status, "respose____")
-            //         if (response.status == 200) {
-            //             // adminlogin();
-            //             window.location.href = '/dashboard/';
-            //         }
-            //     }).catch((err) => {
-            //         console.log("err", err)
-            //     })
-        }
+           }
+      console.log("files",files)
+            axios.post(`/api/createMeeting`, { company_id: company_id, meetingName: meetingname, users: usersList, meetingDate: meetingDate, meetingTime: meetingTime ,files:files})
+                .then((response) => {
+                    // console.log(response.status, "respose____")
+                    if (response.status == 200) {
+                        // adminlogin();
+                        window.location.href = '/dashboard/';
+                    }
+                }).catch((err) => {
+                    console.log("err", err)
+                })
+         }
     </script>
 
 

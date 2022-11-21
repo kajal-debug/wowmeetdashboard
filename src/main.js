@@ -57,6 +57,7 @@ function login() {
     localStorage.setItem("email", respose.email);
     localStorage.setItem("uid", respose.user_id);
     localStorage.setItem("usertype", respose.user_type);
+    
 
     window.location.href("./dashboard/");
 

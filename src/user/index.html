@@ -12,7 +12,7 @@
     <!-- <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
 
     <!-- App css -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.css" rel="stylesheet" type="text/css" />
@@ -39,6 +39,18 @@
             <div class="position-relative mx-auto d-flex justify-content-center p-3">
                 <img id="display-picture" src="assets/images/users/user-4.jpg" alt="user"
                     class="rounded-circle thumb-xxl">
+                    <div id="edit" style=" position: absolute; z-index: 1;
+                    margin: 20px;
+                    /* color: #2d39cc; */
+                    margin-right: -31px;
+                    font-size: 20px;
+                    bottom: 0;">
+                        <i class="far fa-edit" style="
+                        color: #2d39cc;
+                       
+                        font-size: 20px;
+                        " ></i>
+                    </div>
             </div>
             <div class="media-body ms-2 user-detail text-center">
                 <h5 id="display-name" class="font-22 m-0 ">Sachin Pradhan</h5>
@@ -245,7 +257,7 @@
                 <div class="row" id="div-no-meeting">
                     <h4 class="">Teammates</h4>
                     <!-- <div class=" p-5  text-center"> -->
-                        <div id="team">
+                        <div id="team" class="row">
 
                         </div>
                     <!-- </div> -->
@@ -288,6 +300,7 @@
     <!-- <script type="text/javascript"> window.onload=add()</script> -->
 
     <script src="assets/js/jquery-3.6.0.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="./main.js"></script>
     <script src="assets/js/app.js"></script>
@@ -298,6 +311,9 @@
         if(localStorage.usertype==="employee"){
            document.getElementById("empdisplay").style.display="none";
         }
+        document.getElementById('display-name').innerText = localStorage.name;
+        document.getElementById('display-mail').innerText = localStorage.email;
+        
     </script>
 
 </body>

@@ -10,7 +10,7 @@ const authenticate = require('../middlewares/authenticate');
 
 const Comapny = require('../models/CompanyModel');
 const User = require('../models/UserModel');
-
+const imageMimeTypes = ['image/jpeg','image/jpg','image/png']
 
 router.post('/fetchUsers', authenticate,[body('company_id').notEmpty().withMessage('company_id is Required')],async function (request, response) {
   let errors = validationResult(request);
@@ -75,20 +75,10 @@ router.post('/DeleteUsers', authenticate,[body('name').notEmpty().withMessage('c
   // let company = Comapny.findOne({ company_id: request.body.company_id }).then(async (result) => {
 
 
-  const users = await User.findOneAndUpdate(
-    { "name": request.body.name}, // Filter
-    {$set:  {_status: "DCT"}},(err)=>{
-      if(err) {return res.status(401).json({
-          error: true,
-          code: 115,
-          message: "Erro to update user!"
-      })}else{
-        // response.status(200).json({msg:"successfully Deleteed"})
-        response.status(200).json({ msg: 'successfully Deleteed' });
-        // response.redirect('user')
-      }
-  }// Update
-)
+  const users = await User.updateOne({"name": request.body.name},  {_status: "DCT"}, function(err, res) {
+    if (err) throw err;
+    console.log("1 document updated",res);
+  });
 // .then(() => {
 //   response.status(200).json({msg:"successfully Deleteed",user:users})
 // })
@@ -121,20 +111,10 @@ router.post('/AcceptUsers', authenticate,[body('name').notEmpty().withMessage('c
   // let company = Comapny.findOne({ company_id: request.body.company_id }).then(async (result) => {
 
 
-  const users = await User.findOneAndUpdate(
-    { "name": request.body.name}, // Filter
-    {$set:  {_status: "ACT"}},(err)=>{
-      if(err) {return res.status(401).json({
-          error: true,
-          code: 115,
-          message: "Erro to update user!"
-      })}else{
-        // response.status(200).json({msg:"successfully Deleteed"})
-        response.status(200).json({ msg: 'successfully Deleteed',user:users });
-        // response.redirect('user')
-      }
-  }// Update
-)
+  const users = await User.updateOne({"name": request.body.name},  {_status: "ACT"}, function(err, res) {
+    if (err) throw err;
+    console.log("1 document updated",res);
+  });
 // .then(() => {
 //   response.status(200).json({msg:"successfully Deleteed",user:users})
 // })
@@ -159,7 +139,27 @@ router.post('/AcceptUsers', authenticate,[body('name').notEmpty().withMessage('c
   // })
 });
 
+function saveImage(User,imgEncoded){
+  if(imgEncoded == null){
+    return
+  }
+  const img = JSON.parse(imgEncoded);
+  if(img != null && imageMimeTypes.includes(img.type)){
+    User.avatar = new Buffer.from(img.data, 'base64');
+    User.imgType = img.type;
+  }
+}
+ router.post('/profileupload',async(req,res)=>{
 
+  //  saveImage(User,img)
+   console.log('req',req.body,req.files,req.img)
+   try{
+    // const user = await User.save();
+// console.log("res",res)
+   }catch(err){
+    console.log("err",err)
+   }
+ })
 
 // router.get('/superadmin', [], async function (req, response) {
 //   MongoClient.connect(url, function (err, db) {

@@ -12,7 +12,7 @@
     <!-- <link rel="shortcut icon" href="assets/images/favicon.ico"> -->
 
     <!-- App css -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.css" rel="stylesheet" type="text/css" />
@@ -37,6 +37,19 @@
             <div class="position-relative mx-auto d-flex justify-content-center p-3">
                 <img id="display-picture" src="assets/images/users/user-4.jpg" alt="user"
                     class="rounded-circle thumb-xxl">
+                    <div id="edit" style=" position: absolute; z-index: 1;
+                    margin: 20px;
+                    /* color: #2d39cc; */
+                    margin-right: -31px;
+                    font-size: 20px;
+                    bottom: 0;">
+                        <i class="far fa-edit" style="
+                        color: #2d39cc;
+                       
+                        font-size: 20px;
+                        " ></i>
+                    </div>
+                   
             </div>
             <div class="media-body ms-2 user-detail text-center">
                 <h5 id="display-name" class="font-22 m-0 ">Sachin Pradhan</h5>
@@ -223,35 +236,43 @@
     <div class="page-wrapper">
         <div class="page-content-tab">
             <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="page-title-box">
-                            <div class="float-end">
-
-                                <a href="/create-meeting/" id="create-meeting" class="btn btn-light m-1 p-0">
-                                    <h5 class="text-primary d-flex align-items-center">CREATE MEETING
-                                        <i class="ti ti-plus"></i>
-                                    </h5>
-                                </a>
-
-
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-title-box">
+                                <div class="float-end">
+    
+                                    <!-- <a href="../create-meeting/" id="create-meeting" class="btn btn-light m-1 p-0">
+                                        <h5 class="text-primary d-flex align-items-center">CREATE MEETING
+                                            <i class="ti ti-plus"></i>
+                                        </h5>
+                                    </a> -->
+    
+    
+                                </div>
+                               
                             </div>
-                            <h4 class="">Upcoming meetings</h4>
                         </div>
                     </div>
-                </div>
-
-                <div class="row" id="div-no-meeting">
-                    <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center">
-                        <div id="meetings">
-                            <p>Upcoming meetings will be shown here.</p>
-                            <a href="../create-meeting/" id="btn-create-meeting" class="btn btn-primary m-1">Create
-                                meeting</a>
+    
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 p-5 bg-gray-alt text-center">
+                            <div id="meetings">
+                                <p>Upcoming meetings will be shown here.</p>
+                                <a href="../create-meeting/" id="btn-create-meeting" class="btn btn-primary m-1">Create
+                                    meeting</a>
+                                <!-- <button id="createmeeting" type="button" class="btn btn-primary m-1" onclick="function changepath(){
+                                        const link = document.createElement('a');
+              link.setAttribute('class', 'nav-item');
+            
+            link.href = '../create-meeting/'
+            link.click();
+                                  }changepath();">Create
+                                    meeting</button> -->
+                            </div>
                         </div>
                     </div>
-                </div>
-
                 <div id="grid" class="row">
+                    <h4 class="">Upcoming meeting</h4>
                     <!-- <div class="col-md-4 col-lg-4 picture-item p-3">
                         <div class="lightbox effect-image zoom-effect">
                             <img class="img-fluid" src="assets/images/small/img-1.jpg" alt="image-1">
@@ -288,6 +309,7 @@
     <!-- <script type="text/javascript"> window.onload=add()</script> -->
 
     <script src="assets/js/jquery-3.6.0.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="./main.js"></script>
     <script src="assets/js/app.js"></script>
@@ -296,6 +318,8 @@
         if(localStorage.usertype==="employee"){
            document.getElementById("empdisplay").style.display="none";
         }
+        document.getElementById('display-name').innerText = localStorage.name;
+        document.getElementById('display-mail').innerText = localStorage.email;
     </script>
 
 </body>

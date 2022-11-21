@@ -6,7 +6,8 @@ let MeetingSchema = new mongoose.Schema({
     users: { type: Array },
     meetingDate: { type: String, required: true },
     meetingTime: { type: String, required: true },
-    _status: { type: String, default: 'ACT' }
+    _status: { type: String, default: 'ACT' },
+    files:{type:Array}
 }, { timestamps: true });
 const MeetingModel = mongoose.model('collection_meetings', MeetingSchema);
 module.exports = MeetingModel;

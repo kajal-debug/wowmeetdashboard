@@ -16,7 +16,17 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.css" rel="stylesheet" type="text/css" />
+    
+    <!-- <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" /> -->
+    <!-- <link
+    href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+    rel="stylesheet"
+/> -->
 
+<!-- add before </body> -->
+<!-- <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script> -->
 </head>
 
 <body id="body" class="dark-sidebar">
@@ -198,9 +208,14 @@
         <div class="  d-flex p-3 text-center">
             <div class="w-100">
                 <h4 class="m-0 "><span class="w-100">Profile</span> </h4>
-                <img id="display-picture" src="assets/images/users/user-4.jpg" alt="user"
-                    class="rounded-circle thumb-xxl">
-                    <div><p>Upload Photo</p></div>
+                <form action="" id="profileimage">
+
+                    <img id="display-picture1"  src="assets/images/users/user-4.jpg" alt="user"
+                        class="rounded-circle thumb-xxl">
+                        <div><p id="uploadimage">Upload Photo</p></div>
+                        <input type="file" id="files" name="images" style="display: none;"  accept="image/x-png,image/gif,image/jpeg,image/jpg" />
+                </form>
+               
             </div>
          <p></p>
         </div>
@@ -232,22 +247,22 @@
                 <div class="row " id="div-no-meeting">
                     <div class=" p-2 col-lg-6 col-md-6 col-sm col-xs">
                      <div><label for="">Name</label></div>
-                     <div><input type="text" placeholder="kanishk" class="inputfield"></div>
+                     <div><input type="text" placeholder="kanishk" class="inputfield" id="nameinputfield"></div>
                     </div>
                     <div class=" p-2 col-lg-6 col-md-6 col-sm col-xs">
                         <div><label for="">Job role</label></div>
-                        <div><input type="text" placeholder="Developer" class="inputfield"></div>
+                        <div><input type="text" placeholder="Developer" class="inputfield" id="jobroleinputfield"></div>
                        </div>
                     
                 </div>
                 <div class="row " id="div-no-meeting">
                     <div class=" p-2 col-lg-6 col-md-6 col-sm col-xs">
                      <div><label for="">Company email</label></div>
-                     <div><input type="text" placeholder="kanishk@wowexp.ai" class="inputfield"></div>
+                     <div><input type="text" placeholder="kanishk@wowexp.ai" class="inputfield" id="emailinputfield"></div>
                     </div>
                     <div class=" p-2 col-lg-6 col-md-6 col-sm col-xs">
                         <div><label for="">Employee number</label></div>
-                        <div><input type="text" placeholder="WoW005" class="inputfield"></div>
+                        <div><input type="text" placeholder="WoW005" class="inputfield" id="employeeinputfield"></div>
                        </div>
                     
                 </div>
@@ -287,7 +302,22 @@
 
     <!-- App js -->
     <!-- <script type="text/javascript"> window.onload=add()</script> -->
-
+    <!-- <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script> -->
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            FilePond.registerPlugin(
+                FilePondPluginImageResize,
+                FilePondPluginImagePreview,
+                FilePondPluginFileEncode
+            );
+            FilePond.setOption({
+                stylePanelAspectRatio:150/100,
+                imageResizeTargetWidth:100,
+                imageResizeTargetHeight:150,
+            }) 
+            FilePond.parse(document.body)
+        })
+    </script> -->
     <script src="assets/js/jquery-3.6.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="./main.js"></script>
