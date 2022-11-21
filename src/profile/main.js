@@ -2,12 +2,12 @@ var fileuploadfor = document.getElementById('profileimage')
      
 var uploadfile = document.getElementById('uploadimage');
 var file = document.getElementById('files');
-// var uploadimg = document.getElementById('display-picture');
-// var uploadimg1 = document.getElementById('display-picture1');
+var uploadimg = document.getElementById('display-picture');
+var uploadimg1 = document.getElementById('display-picture1');
 
 console.log("profile",localStorage.name.concat(localStorage.image))
-uploadimg.src= `/uploads/${localStorage.name.concat(localStorage.image)}`
-uploadimg1.src= `/uploads/${localStorage.name.concat(localStorage.image)}`
+// uploadimg.src= `/uploads/${localStorage.name.concat(localStorage.image)}`
+// uploadimg1.src= `/uploads/${localStorage.name.concat(localStorage.image)}`
 console.log("upload",)
 uploadfile.addEventListener('click',function(){
     console.log("hii used for file upload")
